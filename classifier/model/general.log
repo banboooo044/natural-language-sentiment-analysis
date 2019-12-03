@@ -1,0 +1,722 @@
+[2019-12-01 22:04:56] - logis1 - start training cv
+[2019-12-01 22:04:56] - logis1 fold 0 - start training
+[2019-12-01 22:05:23] - logis1 - start training cv
+[2019-12-01 22:05:23] - logis1 fold 0 - start training
+[2019-12-01 22:08:22] - logis1 - start training cv
+[2019-12-01 22:08:22] - logis1 fold 0 - start training
+[2019-12-01 22:09:50] - logis1 - start training cv
+[2019-12-01 22:09:50] - logis1 fold 0 - start training
+[2019-12-01 22:10:47] - logis1 - start training cv
+[2019-12-01 22:10:47] - logis1 fold 0 - start training
+[2019-12-01 22:11:45] - logis1 - start training cv
+[2019-12-01 22:11:45] - logis1 fold 0 - start training
+[2019-12-01 22:14:16] - logis1 - start training cv
+[2019-12-01 22:14:16] - logis1 fold 0 - start training
+[2019-12-01 22:14:43] - logis1 - start training cv
+[2019-12-01 22:14:43] - logis1 fold 0 - start training
+[2019-12-01 22:15:27] - logis1 - start training cv
+[2019-12-01 22:15:27] - logis1 fold 0 - start training
+[2019-12-01 22:16:36] - logis1 - start training cv
+[2019-12-01 22:16:36] - logis1 fold 0 - start training
+[2019-12-01 22:19:18] - logis1 - start training cv
+[2019-12-01 22:19:18] - logis1 fold 0 - start training
+[2019-12-01 22:19:47] - logis1 - start training cv
+[2019-12-01 22:19:47] - logis1 fold 0 - start training
+[2019-12-01 22:20:35] - logis1 - start training cv
+[2019-12-01 22:20:35] - logis1 fold 0 - start training
+[2019-12-01 22:20:52] - logis1 - start training cv
+[2019-12-01 22:20:52] - logis1 fold 0 - start training
+[2019-12-01 22:22:46] - logis1 - start training cv
+[2019-12-01 22:22:46] - logis1 fold 0 - start training
+[2019-12-01 22:24:53] - logis1 - start training cv
+[2019-12-01 22:24:53] - logis1 fold 0 - start training
+[2019-12-01 22:29:32] - logis1 - start training cv
+[2019-12-01 22:29:32] - logis1 fold 0 - start training
+[2019-12-01 22:46:09] - logis1 - start training cv
+[2019-12-01 22:46:09] - logis1 fold 0 - start training
+[2019-12-01 22:51:18] - logis1 - start training cv
+[2019-12-01 22:51:18] - logis1 fold 0 - start training
+[2019-12-01 23:07:38] - logis1 - start training cv
+[2019-12-01 23:07:38] - logis1 fold 0 - start training
+[2019-12-01 23:35:27] - logis1 - start training cv
+[2019-12-01 23:35:27] - logis1 fold 0 - start training
+[2019-12-01 23:35:29] - logis1 fold 0 - end training - score 0.479874213836478
+[2019-12-01 23:35:29] - logis1 fold 1 - start training
+[2019-12-01 23:35:31] - logis1 fold 1 - end training - score 0.44080604534005036
+[2019-12-01 23:35:31] - logis1 fold 2 - start training
+[2019-12-01 23:35:33] - logis1 fold 2 - end training - score 0.45741324921135645
+[2019-12-01 23:35:33] - logis1 fold 3 - start training
+[2019-12-01 23:35:35] - logis1 fold 3 - end training - score 0.461877756773787
+[2019-12-01 23:35:35] - logis1 fold 4 - start training
+[2019-12-01 23:35:37] - logis1 fold 4 - end training - score 0.45483259633607076
+[2019-12-01 23:35:37] - logis1 fold 5 - start training
+[2019-12-01 23:35:39] - logis1 fold 5 - end training - score 0.46995572422517395
+[2019-12-01 23:35:39] - logis1 - end training cv - score 0.46079326428715284
+[2019-12-01 23:35:39] - logis1 - start prediction cv
+[2019-12-01 23:35:40] - logis1 - start prediction fold:0
+[2019-12-01 23:35:40] - logis1 - end prediction fold:0
+[2019-12-01 23:35:40] - logis1 - start prediction fold:1
+[2019-12-01 23:35:40] - logis1 - end prediction fold:1
+[2019-12-01 23:35:40] - logis1 - start prediction fold:2
+[2019-12-01 23:35:40] - logis1 - end prediction fold:2
+[2019-12-01 23:35:40] - logis1 - start prediction fold:3
+[2019-12-01 23:35:40] - logis1 - end prediction fold:3
+[2019-12-01 23:35:40] - logis1 - start prediction fold:4
+[2019-12-01 23:35:40] - logis1 - end prediction fold:4
+[2019-12-01 23:35:40] - logis1 - start prediction fold:5
+[2019-12-01 23:35:40] - logis1 - end prediction fold:5
+[2019-12-01 23:35:40] - logis1 - end prediction cv
+[2019-12-01 23:38:45] - logis1 - start training cv
+[2019-12-01 23:38:45] - logis1 fold 0 - start training
+[2019-12-01 23:38:47] - logis1 fold 0 - end training - score 0.46064231738035266
+[2019-12-01 23:38:47] - logis1 fold 1 - start training
+[2019-12-01 23:38:49] - logis1 fold 1 - end training - score 0.45110410094637227
+[2019-12-01 23:38:49] - logis1 fold 2 - start training
+[2019-12-01 23:38:51] - logis1 fold 2 - end training - score 0.44917929292929293
+[2019-12-01 23:38:51] - logis1 - end training cv - score 0.453641903752006
+[2019-12-01 23:38:51] - logis1 - start prediction cv
+[2019-12-01 23:38:52] - logis1 - start prediction fold:0
+[2019-12-01 23:38:52] - logis1 - end prediction fold:0
+[2019-12-01 23:38:52] - logis1 - start prediction fold:1
+[2019-12-01 23:38:52] - logis1 - end prediction fold:1
+[2019-12-01 23:38:52] - logis1 - start prediction fold:2
+[2019-12-01 23:38:52] - logis1 - end prediction fold:2
+[2019-12-01 23:38:52] - logis1 - end prediction cv
+[2019-12-02 00:14:08] - logis1 - start training cv
+[2019-12-02 00:14:08] - logis1 fold 0 - start training
+[2019-12-02 00:15:04] - logis1 - start training cv
+[2019-12-02 00:15:04] - logis1 fold 0 - start training
+[2019-12-02 00:16:32] - logis1 - start training cv
+[2019-12-02 00:16:32] - logis1 fold 0 - start training
+[2019-12-02 00:17:24] - logis1 - start training cv
+[2019-12-02 00:17:24] - logis1 fold 0 - start training
+[2019-12-02 00:18:52] - logis1 - start training cv
+[2019-12-02 00:18:52] - logis1 fold 0 - start training
+[2019-12-02 00:46:31] - logis1 - start training cv
+[2019-12-02 00:46:31] - logis1 fold 0 - start training
+[2019-12-02 00:46:33] - logis1 fold 0 - end training - score 0.46706586826347307
+[2019-12-02 00:46:33] - logis1 fold 1 - start training
+[2019-12-02 00:46:34] - logis1 fold 1 - end training - score 0.45380006307158627
+[2019-12-02 00:46:34] - logis1 fold 2 - start training
+[2019-12-02 00:46:35] - logis1 fold 2 - end training - score 0.4545741324921136
+[2019-12-02 00:46:35] - logis1 - end training cv - score 0.4584800212757243
+[2019-12-02 00:46:35] - logis1 - start prediction cv
+[2019-12-02 00:46:37] - logis1 - start prediction fold:0
+[2019-12-02 00:46:37] - logis1 - end prediction fold:0
+[2019-12-02 00:46:37] - logis1 - start prediction fold:1
+[2019-12-02 00:46:37] - logis1 - end prediction fold:1
+[2019-12-02 00:46:37] - logis1 - start prediction fold:2
+[2019-12-02 00:46:37] - logis1 - end prediction fold:2
+[2019-12-02 00:46:37] - logis1 - end prediction cv
+[2019-12-02 00:50:47] - logis1 - start training cv
+[2019-12-02 00:50:47] - logis1 fold 0 - start training
+[2019-12-02 00:50:50] - logis1 fold 0 - end training - score 0.4424166142227816
+[2019-12-02 00:50:50] - logis1 fold 1 - start training
+[2019-12-02 00:50:53] - logis1 fold 1 - end training - score 0.4492753623188406
+[2019-12-02 00:50:53] - logis1 fold 2 - start training
+[2019-12-02 00:50:55] - logis1 fold 2 - end training - score 0.45397225725094575
+[2019-12-02 00:50:55] - logis1 fold 3 - start training
+[2019-12-02 00:50:58] - logis1 fold 3 - end training - score 0.43434343434343436
+[2019-12-02 00:50:58] - logis1 fold 4 - start training
+[2019-12-02 00:51:01] - logis1 fold 4 - end training - score 0.4311868686868687
+[2019-12-02 00:51:01] - logis1 fold 5 - start training
+[2019-12-02 00:51:03] - logis1 fold 5 - end training - score 0.4532828282828283
+[2019-12-02 00:51:03] - logis1 - end training cv - score 0.44407956085094985
+[2019-12-02 00:51:03] - logis1 - start prediction cv
+[2019-12-02 00:51:04] - logis1 - start prediction fold:0
+[2019-12-02 00:51:04] - logis1 - end prediction fold:0
+[2019-12-02 00:51:04] - logis1 - start prediction fold:1
+[2019-12-02 00:51:04] - logis1 - end prediction fold:1
+[2019-12-02 00:51:04] - logis1 - start prediction fold:2
+[2019-12-02 00:51:04] - logis1 - end prediction fold:2
+[2019-12-02 00:51:04] - logis1 - start prediction fold:3
+[2019-12-02 00:51:04] - logis1 - end prediction fold:3
+[2019-12-02 00:51:04] - logis1 - start prediction fold:4
+[2019-12-02 00:51:04] - logis1 - end prediction fold:4
+[2019-12-02 00:51:04] - logis1 - start prediction fold:5
+[2019-12-02 00:51:04] - logis1 - end prediction fold:5
+[2019-12-02 00:51:04] - logis1 - end prediction cv
+[2019-12-02 00:51:53] - logis1 - start training cv
+[2019-12-02 00:51:53] - logis1 fold 0 - start training
+[2019-12-02 00:51:55] - logis1 fold 0 - end training - score 0.38892385147891756
+[2019-12-02 00:51:55] - logis1 fold 1 - start training
+[2019-12-02 00:51:57] - logis1 fold 1 - end training - score 0.3950850661625709
+[2019-12-02 00:51:57] - logis1 fold 2 - start training
+[2019-12-02 00:51:58] - logis1 fold 2 - end training - score 0.37326607818411095
+[2019-12-02 00:51:58] - logis1 fold 3 - start training
+[2019-12-02 00:52:00] - logis1 fold 3 - end training - score 0.35858585858585856
+[2019-12-02 00:52:00] - logis1 fold 4 - start training
+[2019-12-02 00:52:01] - logis1 fold 4 - end training - score 0.37436868686868685
+[2019-12-02 00:52:01] - logis1 fold 5 - start training
+[2019-12-02 00:52:03] - logis1 fold 5 - end training - score 0.37058080808080807
+[2019-12-02 00:52:03] - logis1 - end training cv - score 0.3768017248934921
+[2019-12-02 00:52:03] - logis1 - start prediction cv
+[2019-12-02 00:52:04] - logis1 - start prediction fold:0
+[2019-12-02 00:52:04] - logis1 - end prediction fold:0
+[2019-12-02 00:52:04] - logis1 - start prediction fold:1
+[2019-12-02 00:52:04] - logis1 - end prediction fold:1
+[2019-12-02 00:52:04] - logis1 - start prediction fold:2
+[2019-12-02 00:52:04] - logis1 - end prediction fold:2
+[2019-12-02 00:52:04] - logis1 - start prediction fold:3
+[2019-12-02 00:52:04] - logis1 - end prediction fold:3
+[2019-12-02 00:52:04] - logis1 - start prediction fold:4
+[2019-12-02 00:52:04] - logis1 - end prediction fold:4
+[2019-12-02 00:52:04] - logis1 - start prediction fold:5
+[2019-12-02 00:52:04] - logis1 - end prediction fold:5
+[2019-12-02 00:52:04] - logis1 - end prediction cv
+[2019-12-02 00:53:39] - logis1 - start training cv
+[2019-12-02 00:53:39] - logis1 fold 0 - start training
+[2019-12-02 00:53:41] - logis1 fold 0 - end training - score 0.3832599118942731
+[2019-12-02 00:53:41] - logis1 fold 1 - start training
+[2019-12-02 00:53:44] - logis1 fold 1 - end training - score 0.3868935097668557
+[2019-12-02 00:53:44] - logis1 fold 2 - start training
+[2019-12-02 00:53:47] - logis1 fold 2 - end training - score 0.3669609079445145
+[2019-12-02 00:53:47] - logis1 fold 3 - start training
+[2019-12-02 00:53:49] - logis1 fold 3 - end training - score 0.33964646464646464
+[2019-12-02 00:53:49] - logis1 fold 4 - start training
+[2019-12-02 00:53:52] - logis1 fold 4 - end training - score 0.37058080808080807
+[2019-12-02 00:53:52] - logis1 fold 5 - start training
+[2019-12-02 00:53:54] - logis1 fold 5 - end training - score 0.3440656565656566
+[2019-12-02 00:53:54] - logis1 - end training cv - score 0.36523454314976206
+[2019-12-02 00:53:54] - logis1 - start prediction cv
+[2019-12-02 00:53:55] - logis1 - start prediction fold:0
+[2019-12-02 00:53:55] - logis1 - end prediction fold:0
+[2019-12-02 00:53:55] - logis1 - start prediction fold:1
+[2019-12-02 00:53:55] - logis1 - end prediction fold:1
+[2019-12-02 00:53:55] - logis1 - start prediction fold:2
+[2019-12-02 00:53:55] - logis1 - end prediction fold:2
+[2019-12-02 00:53:55] - logis1 - start prediction fold:3
+[2019-12-02 00:53:55] - logis1 - end prediction fold:3
+[2019-12-02 00:53:55] - logis1 - start prediction fold:4
+[2019-12-02 00:53:55] - logis1 - end prediction fold:4
+[2019-12-02 00:53:55] - logis1 - start prediction fold:5
+[2019-12-02 00:53:55] - logis1 - end prediction fold:5
+[2019-12-02 00:53:55] - logis1 - end prediction cv
+[2019-12-02 00:54:03] - logis1 - start training cv
+[2019-12-02 00:54:03] - logis1 fold 0 - start training
+[2019-12-02 00:54:05] - logis1 fold 0 - end training - score 0.4424166142227816
+[2019-12-02 00:54:05] - logis1 fold 1 - start training
+[2019-12-02 00:54:08] - logis1 fold 1 - end training - score 0.4492753623188406
+[2019-12-02 00:54:08] - logis1 fold 2 - start training
+[2019-12-02 00:54:11] - logis1 fold 2 - end training - score 0.45397225725094575
+[2019-12-02 00:54:11] - logis1 fold 3 - start training
+[2019-12-02 00:54:14] - logis1 fold 3 - end training - score 0.43434343434343436
+[2019-12-02 00:54:14] - logis1 fold 4 - start training
+[2019-12-02 00:54:17] - logis1 fold 4 - end training - score 0.4311868686868687
+[2019-12-02 00:54:17] - logis1 fold 5 - start training
+[2019-12-02 00:54:19] - logis1 fold 5 - end training - score 0.4532828282828283
+[2019-12-02 00:54:19] - logis1 - end training cv - score 0.44407956085094985
+[2019-12-02 00:54:19] - logis1 - start prediction cv
+[2019-12-02 00:54:21] - logis1 - start prediction fold:0
+[2019-12-02 00:54:21] - logis1 - end prediction fold:0
+[2019-12-02 00:54:21] - logis1 - start prediction fold:1
+[2019-12-02 00:54:21] - logis1 - end prediction fold:1
+[2019-12-02 00:54:21] - logis1 - start prediction fold:2
+[2019-12-02 00:54:21] - logis1 - end prediction fold:2
+[2019-12-02 00:54:21] - logis1 - start prediction fold:3
+[2019-12-02 00:54:21] - logis1 - end prediction fold:3
+[2019-12-02 00:54:21] - logis1 - start prediction fold:4
+[2019-12-02 00:54:21] - logis1 - end prediction fold:4
+[2019-12-02 00:54:21] - logis1 - start prediction fold:5
+[2019-12-02 00:54:21] - logis1 - end prediction fold:5
+[2019-12-02 00:54:21] - logis1 - end prediction cv
+[2019-12-02 00:54:37] - logis1 - start training cv
+[2019-12-02 00:54:37] - logis1 fold 0 - start training
+[2019-12-02 01:16:24] - logis1 - start training cv
+[2019-12-02 01:16:24] - logis1 fold 0 - start training
+[2019-12-02 01:17:38] - logis1 - start training cv
+[2019-12-02 01:17:38] - logis1 fold 0 - start training
+[2019-12-02 01:19:26] - logis1 - start training cv
+[2019-12-02 01:19:26] - logis1 fold 0 - start training
+[2019-12-02 01:19:30] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:19:30] - logis1 fold 1 - start training
+[2019-12-02 01:19:33] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 01:19:33] - logis1 fold 2 - start training
+[2019-12-02 01:19:35] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 01:19:35] - logis1 fold 3 - start training
+[2019-12-02 01:19:38] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 01:19:38] - logis1 fold 4 - start training
+[2019-12-02 01:19:40] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 01:19:40] - logis1 fold 5 - start training
+[2019-12-02 01:19:42] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 01:19:42] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 01:20:11] - logis_nvs1 - start training cv
+[2019-12-02 01:20:11] - logis_nvs1 fold 0 - start training
+[2019-12-02 01:21:05] - logis_nva1 - start training cv
+[2019-12-02 01:21:05] - logis_nva1 fold 0 - start training
+[2019-12-02 01:21:07] - logis_nva1 fold 0 - end training - score 0.4424166142227816
+[2019-12-02 01:21:07] - logis_nva1 fold 1 - start training
+[2019-12-02 01:21:09] - logis_nva1 fold 1 - end training - score 0.4492753623188406
+[2019-12-02 01:21:09] - logis_nva1 fold 2 - start training
+[2019-12-02 01:21:11] - logis_nva1 fold 2 - end training - score 0.45397225725094575
+[2019-12-02 01:21:11] - logis_nva1 fold 3 - start training
+[2019-12-02 01:21:12] - logis_nva1 fold 3 - end training - score 0.43434343434343436
+[2019-12-02 01:21:12] - logis_nva1 fold 4 - start training
+[2019-12-02 01:21:14] - logis_nva1 fold 4 - end training - score 0.4311868686868687
+[2019-12-02 01:21:14] - logis_nva1 fold 5 - start training
+[2019-12-02 01:21:15] - logis_nva1 fold 5 - end training - score 0.4532828282828283
+[2019-12-02 01:21:15] - logis_nva1 - end training cv - score 0.44407956085094985
+[2019-12-02 01:21:44] - logis1 - start training cv
+[2019-12-02 01:22:09] - logis1 - start training cv
+[2019-12-02 01:22:09] - logis1 fold 0 - start training
+[2019-12-02 01:22:37] - logis1 - start training cv
+[2019-12-02 01:22:37] - logis1 fold 0 - start training
+[2019-12-02 01:22:42] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:22:42] - logis1 fold 1 - start training
+[2019-12-02 01:25:32] - logis1 - start training cv
+[2019-12-02 01:25:32] - logis1 fold 0 - start training
+[2019-12-02 01:25:37] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:25:37] - logis1 fold 1 - start training
+[2019-12-02 01:27:29] - logis1 - start training cv
+[2019-12-02 01:27:29] - logis1 fold 0 - start training
+[2019-12-02 01:27:34] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:27:34] - logis1 fold 1 - start training
+[2019-12-02 01:30:19] - logis1 - start training cv
+[2019-12-02 01:30:19] - logis1 fold 0 - start training
+[2019-12-02 01:30:24] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:30:24] - logis1 fold 1 - start training
+[2019-12-02 01:30:28] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 01:30:28] - logis1 fold 2 - start training
+[2019-12-02 01:30:31] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 01:30:31] - logis1 fold 3 - start training
+[2019-12-02 01:30:35] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 01:30:35] - logis1 fold 4 - start training
+[2019-12-02 01:30:38] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 01:30:38] - logis1 fold 5 - start training
+[2019-12-02 01:30:42] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 01:30:42] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 01:31:18] - logis1 - start training cv
+[2019-12-02 01:31:18] - logis1 fold 0 - start training
+[2019-12-02 01:31:23] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:31:23] - logis1 fold 1 - start training
+[2019-12-02 01:31:27] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 01:31:27] - logis1 fold 2 - start training
+[2019-12-02 01:31:31] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 01:31:31] - logis1 fold 3 - start training
+[2019-12-02 01:31:35] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 01:31:35] - logis1 fold 4 - start training
+[2019-12-02 01:31:40] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 01:31:40] - logis1 fold 5 - start training
+[2019-12-02 01:31:44] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 01:31:44] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 01:40:18] - logis1 - start training cv
+[2019-12-02 01:40:18] - logis1 fold 0 - start training
+[2019-12-02 01:40:24] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:40:24] - logis1 fold 1 - start training
+[2019-12-02 01:40:28] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 01:40:29] - logis1 fold 2 - start training
+[2019-12-02 01:40:33] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 01:40:33] - logis1 fold 3 - start training
+[2019-12-02 01:40:37] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 01:40:37] - logis1 fold 4 - start training
+[2019-12-02 01:40:41] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 01:40:41] - logis1 fold 5 - start training
+[2019-12-02 01:40:45] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 01:40:45] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 01:44:05] - logis1 - start training cv
+[2019-12-02 01:44:05] - logis1 fold 0 - start training
+[2019-12-02 01:44:11] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:44:11] - logis1 fold 1 - start training
+[2019-12-02 01:44:15] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 01:44:15] - logis1 fold 2 - start training
+[2019-12-02 01:44:19] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 01:44:19] - logis1 fold 3 - start training
+[2019-12-02 01:44:23] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 01:44:23] - logis1 fold 4 - start training
+[2019-12-02 01:44:28] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 01:44:28] - logis1 fold 5 - start training
+[2019-12-02 01:44:32] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 01:44:32] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 01:49:35] - logis1 - start training cv
+[2019-12-02 01:49:35] - logis1 fold 0 - start training
+[2019-12-02 01:49:40] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:49:40] - logis1 fold 1 - start training
+[2019-12-02 01:49:44] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 01:49:44] - logis1 fold 2 - start training
+[2019-12-02 01:49:48] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 01:49:48] - logis1 fold 3 - start training
+[2019-12-02 01:49:52] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 01:49:52] - logis1 fold 4 - start training
+[2019-12-02 01:49:56] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 01:49:56] - logis1 fold 5 - start training
+[2019-12-02 01:49:59] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 01:49:59] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 01:57:23] - logis1 - start training cv
+[2019-12-02 01:57:23] - logis1 fold 0 - start training
+[2019-12-02 01:57:29] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 01:57:29] - logis1 fold 1 - start training
+[2019-12-02 01:57:33] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 01:57:33] - logis1 fold 2 - start training
+[2019-12-02 01:57:36] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 01:57:36] - logis1 fold 3 - start training
+[2019-12-02 01:57:40] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 01:57:40] - logis1 fold 4 - start training
+[2019-12-02 01:57:43] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 01:57:43] - logis1 fold 5 - start training
+[2019-12-02 01:57:47] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 01:57:47] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 01:59:58] - logis1 - start training cv
+[2019-12-02 01:59:58] - logis1 fold 0 - start training
+[2019-12-02 02:00:03] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:00:03] - logis1 fold 1 - start training
+[2019-12-02 02:00:07] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:00:07] - logis1 fold 2 - start training
+[2019-12-02 02:00:11] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:00:11] - logis1 fold 3 - start training
+[2019-12-02 02:00:14] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:00:14] - logis1 fold 4 - start training
+[2019-12-02 02:00:19] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:00:19] - logis1 fold 5 - start training
+[2019-12-02 02:00:22] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:00:22] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:01:49] - logis1 - start training cv
+[2019-12-02 02:01:49] - logis1 fold 0 - start training
+[2019-12-02 02:01:54] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:01:54] - logis1 fold 1 - start training
+[2019-12-02 02:01:58] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:01:58] - logis1 fold 2 - start training
+[2019-12-02 02:02:02] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:02:02] - logis1 fold 3 - start training
+[2019-12-02 02:02:06] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:02:06] - logis1 fold 4 - start training
+[2019-12-02 02:02:10] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:02:10] - logis1 fold 5 - start training
+[2019-12-02 02:02:14] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:02:14] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:17:59] - logis1 - start training cv
+[2019-12-02 02:17:59] - logis1 fold 0 - start training
+[2019-12-02 02:18:04] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:18:04] - logis1 fold 1 - start training
+[2019-12-02 02:18:08] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:18:08] - logis1 fold 2 - start training
+[2019-12-02 02:18:12] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:18:12] - logis1 fold 3 - start training
+[2019-12-02 02:18:16] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:18:16] - logis1 fold 4 - start training
+[2019-12-02 02:18:20] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:18:20] - logis1 fold 5 - start training
+[2019-12-02 02:18:23] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:18:24] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:22:04] - logis1 - start training cv
+[2019-12-02 02:22:04] - logis1 fold 0 - start training
+[2019-12-02 02:22:46] - logis1 - start training cv
+[2019-12-02 02:22:46] - logis1 fold 0 - start training
+[2019-12-02 02:23:26] - logis1 - start training cv
+[2019-12-02 02:23:26] - logis1 fold 0 - start training
+[2019-12-02 02:23:31] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:23:31] - logis1 fold 1 - start training
+[2019-12-02 02:23:35] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:23:35] - logis1 fold 2 - start training
+[2019-12-02 02:23:39] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:23:39] - logis1 fold 3 - start training
+[2019-12-02 02:23:42] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:23:42] - logis1 fold 4 - start training
+[2019-12-02 02:23:46] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:23:46] - logis1 fold 5 - start training
+[2019-12-02 02:23:50] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:23:50] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:38:19] - logis1 - start training cv
+[2019-12-02 02:38:19] - logis1 fold 0 - start training
+[2019-12-02 02:38:25] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:38:25] - logis1 fold 1 - start training
+[2019-12-02 02:38:29] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:38:29] - logis1 fold 2 - start training
+[2019-12-02 02:38:32] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:38:32] - logis1 fold 3 - start training
+[2019-12-02 02:38:36] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:38:36] - logis1 fold 4 - start training
+[2019-12-02 02:38:40] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:38:40] - logis1 fold 5 - start training
+[2019-12-02 02:38:44] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:38:44] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:39:33] - logis1 - start training cv
+[2019-12-02 02:39:33] - logis1 fold 0 - start training
+[2019-12-02 02:39:39] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:39:39] - logis1 fold 1 - start training
+[2019-12-02 02:39:43] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:39:43] - logis1 fold 2 - start training
+[2019-12-02 02:39:47] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:39:47] - logis1 fold 3 - start training
+[2019-12-02 02:39:50] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:39:50] - logis1 fold 4 - start training
+[2019-12-02 02:39:54] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:39:54] - logis1 fold 5 - start training
+[2019-12-02 02:39:58] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:39:58] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:41:25] - logis1 - start training cv
+[2019-12-02 02:41:25] - logis1 fold 0 - start training
+[2019-12-02 02:41:31] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:41:31] - logis1 fold 1 - start training
+[2019-12-02 02:41:35] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:41:35] - logis1 fold 2 - start training
+[2019-12-02 02:41:38] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:41:38] - logis1 fold 3 - start training
+[2019-12-02 02:41:42] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:41:42] - logis1 fold 4 - start training
+[2019-12-02 02:41:45] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:41:45] - logis1 fold 5 - start training
+[2019-12-02 02:41:49] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:41:49] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:43:03] - logis1 - start training cv
+[2019-12-02 02:43:03] - logis1 fold 0 - start training
+[2019-12-02 02:43:09] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:43:09] - logis1 fold 1 - start training
+[2019-12-02 02:43:14] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:43:14] - logis1 fold 2 - start training
+[2019-12-02 02:43:19] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:43:19] - logis1 fold 3 - start training
+[2019-12-02 02:43:23] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:43:23] - logis1 fold 4 - start training
+[2019-12-02 02:43:28] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:43:28] - logis1 fold 5 - start training
+[2019-12-02 02:43:33] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:43:33] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:45:23] - logis1 - start training cv
+[2019-12-02 02:45:23] - logis1 fold 0 - start training
+[2019-12-02 02:45:28] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:45:28] - logis1 fold 1 - start training
+[2019-12-02 02:45:32] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:45:32] - logis1 fold 2 - start training
+[2019-12-02 02:45:36] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:45:36] - logis1 fold 3 - start training
+[2019-12-02 02:45:40] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:45:40] - logis1 fold 4 - start training
+[2019-12-02 02:45:44] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:45:44] - logis1 fold 5 - start training
+[2019-12-02 02:45:48] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:45:48] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:48:39] - logis1 - start training cv
+[2019-12-02 02:48:39] - logis1 fold 0 - start training
+[2019-12-02 02:49:51] - logis1 - start training cv
+[2019-12-02 02:49:51] - logis1 fold 0 - start training
+[2019-12-02 02:50:34] - logis1 - start training cv
+[2019-12-02 02:50:34] - logis1 fold 0 - start training
+[2019-12-02 02:50:39] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:50:39] - logis1 fold 1 - start training
+[2019-12-02 02:50:43] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:50:43] - logis1 fold 2 - start training
+[2019-12-02 02:50:47] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:50:47] - logis1 fold 3 - start training
+[2019-12-02 02:50:52] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:50:52] - logis1 fold 4 - start training
+[2019-12-02 02:50:55] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:50:55] - logis1 fold 5 - start training
+[2019-12-02 02:50:59] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:50:59] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:54:25] - logis1 - start training cv
+[2019-12-02 02:54:25] - logis1 fold 0 - start training
+[2019-12-02 02:54:31] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:54:31] - logis1 fold 1 - start training
+[2019-12-02 02:54:35] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:54:35] - logis1 fold 2 - start training
+[2019-12-02 02:54:39] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:54:39] - logis1 fold 3 - start training
+[2019-12-02 02:54:43] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:54:43] - logis1 fold 4 - start training
+[2019-12-02 02:54:46] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:54:46] - logis1 fold 5 - start training
+[2019-12-02 02:54:50] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:54:50] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:55:40] - logis1 - start training cv
+[2019-12-02 02:55:40] - logis1 fold 0 - start training
+[2019-12-02 02:55:46] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:55:46] - logis1 fold 1 - start training
+[2019-12-02 02:55:49] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:55:49] - logis1 fold 2 - start training
+[2019-12-02 02:55:53] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:55:53] - logis1 fold 3 - start training
+[2019-12-02 02:55:57] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:55:57] - logis1 fold 4 - start training
+[2019-12-02 02:56:01] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:56:01] - logis1 fold 5 - start training
+[2019-12-02 02:56:05] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:56:05] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:56:54] - logis1 - start training cv
+[2019-12-02 02:56:54] - logis1 fold 0 - start training
+[2019-12-02 02:57:00] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 02:57:00] - logis1 fold 1 - start training
+[2019-12-02 02:57:04] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 02:57:04] - logis1 fold 2 - start training
+[2019-12-02 02:57:08] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 02:57:08] - logis1 fold 3 - start training
+[2019-12-02 02:57:11] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 02:57:11] - logis1 fold 4 - start training
+[2019-12-02 02:57:15] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 02:57:15] - logis1 fold 5 - start training
+[2019-12-02 02:57:19] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 02:57:19] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 02:58:01] - logis1 - start training cv
+[2019-12-02 02:58:01] - logis1 fold 0 - start training
+[2019-12-02 02:58:09] - logis1 fold 0 - end training - score 0.4641975308641975
+[2019-12-02 02:58:10] - logis1 fold 1 - start training
+[2019-12-02 02:58:16] - logis1 fold 1 - end training - score 0.43730697961704756
+[2019-12-02 02:58:17] - logis1 fold 2 - start training
+[2019-12-02 02:58:24] - logis1 fold 2 - end training - score 0.4573547589616811
+[2019-12-02 02:58:24] - logis1 fold 3 - start training
+[2019-12-02 02:58:31] - logis1 fold 3 - end training - score 0.47339108910891087
+[2019-12-02 02:58:31] - logis1 fold 4 - start training
+[2019-12-02 02:58:39] - logis1 fold 4 - end training - score 0.46782178217821785
+[2019-12-02 02:58:39] - logis1 fold 5 - start training
+[2019-12-02 02:58:46] - logis1 fold 5 - end training - score 0.4771039603960396
+[2019-12-02 02:58:46] - logis1 - end training cv - score 0.4628626835210157
+[2019-12-02 03:00:17] - logis1 - start training cv
+[2019-12-02 03:00:17] - logis1 fold 0 - start training
+[2019-12-02 03:00:32] - logis1 - start training cv
+[2019-12-02 03:00:32] - logis1 fold 0 - start training
+[2019-12-02 03:01:54] - logis1 - start training cv
+[2019-12-02 03:01:54] - logis1 fold 0 - start training
+[2019-12-02 03:02:07] - logis1 - start training cv
+[2019-12-02 03:02:07] - logis1 fold 0 - start training
+[2019-12-02 03:02:23] - logis1 fold 0 - end training - score 0.4740740740740741
+[2019-12-02 03:02:23] - logis1 fold 1 - start training
+[2019-12-02 03:02:37] - logis1 fold 1 - end training - score 0.4515132798023471
+[2019-12-02 03:02:37] - logis1 fold 2 - start training
+[2019-12-02 03:02:49] - logis1 fold 2 - end training - score 0.4703337453646477
+[2019-12-02 03:02:49] - logis1 fold 3 - start training
+[2019-12-02 03:03:02] - logis1 fold 3 - end training - score 0.49133663366336633
+[2019-12-02 03:03:02] - logis1 fold 4 - start training
+[2019-12-02 03:03:15] - logis1 fold 4 - end training - score 0.4777227722772277
+[2019-12-02 03:03:15] - logis1 fold 5 - start training
+[2019-12-02 03:03:27] - logis1 fold 5 - end training - score 0.48267326732673266
+[2019-12-02 03:03:27] - logis1 - end training cv - score 0.4746089620847325
+[2019-12-02 12:22:32] - logis-tfidf - start training cv
+[2019-12-02 12:22:32] - logis-tfidf fold 0 - start training
+[2019-12-02 12:27:19] - logis1 - start training cv
+[2019-12-02 12:27:19] - logis1 fold 0 - start training
+[2019-12-02 12:27:22] - logis1 fold 0 - end training - score 0.39012345679012345
+[2019-12-02 12:27:22] - logis1 fold 1 - start training
+[2019-12-02 12:27:24] - logis1 fold 1 - end training - score 0.3712168004941322
+[2019-12-02 12:27:24] - logis1 fold 2 - start training
+[2019-12-02 12:27:25] - logis1 fold 2 - end training - score 0.3800988875154512
+[2019-12-02 12:27:25] - logis1 fold 3 - start training
+[2019-12-02 12:27:27] - logis1 fold 3 - end training - score 0.38242574257425743
+[2019-12-02 12:27:27] - logis1 fold 4 - start training
+[2019-12-02 12:27:28] - logis1 fold 4 - end training - score 0.36014851485148514
+[2019-12-02 12:27:28] - logis1 fold 5 - start training
+[2019-12-02 12:27:30] - logis1 fold 5 - end training - score 0.40655940594059403
+[2019-12-02 12:27:30] - logis1 - end training cv - score 0.38176213469434056
+[2019-12-02 18:10:54] - bow - bestscore : 0.4721277691911386
+[2019-12-02 18:12:05] - bow - bestscore : 0.4721277691911386
+[2019-12-02 18:12:05] - bow_nva - bestscore : 0.4642631910868194
+[2019-12-02 18:12:05] - bow_tf-idf - bestscore : 0.39392065945388977
+[2019-12-02 18:29:18] - logis-td-idf-all - start training cv
+[2019-12-02 18:29:18] - logis-td-idf-all fold 0 - start training
+[2019-12-02 18:29:21] - logis-td-idf-all fold 0 - end training - score 0.39012345679012345
+[2019-12-02 18:29:22] - logis-td-idf-all fold 1 - start training
+[2019-12-02 18:29:23] - logis-td-idf-all fold 1 - end training - score 0.3712168004941322
+[2019-12-02 18:29:23] - logis-td-idf-all fold 2 - start training
+[2019-12-02 18:29:24] - logis-td-idf-all fold 2 - end training - score 0.3800988875154512
+[2019-12-02 18:29:24] - logis-td-idf-all fold 3 - start training
+[2019-12-02 18:29:26] - logis-td-idf-all fold 3 - end training - score 0.38242574257425743
+[2019-12-02 18:29:26] - logis-td-idf-all fold 4 - start training
+[2019-12-02 18:29:28] - logis-td-idf-all fold 4 - end training - score 0.36014851485148514
+[2019-12-02 18:29:28] - logis-td-idf-all fold 5 - start training
+[2019-12-02 18:29:29] - logis-td-idf-all fold 5 - end training - score 0.40655940594059403
+[2019-12-02 18:29:29] - logis-td-idf-all - end training cv - score 0.38176213469434056
+[2019-12-02 18:30:14] - logis-td-idf-all - start training cv
+[2019-12-02 18:30:14] - logis-td-idf-all fold 0 - start training
+[2019-12-02 18:30:15] - logis-td-idf-all fold 0 - end training - score 0.4148148148148148
+[2019-12-02 18:30:15] - logis-td-idf-all fold 1 - start training
+[2019-12-02 18:30:16] - logis-td-idf-all fold 1 - end training - score 0.41136504014823966
+[2019-12-02 18:30:16] - logis-td-idf-all fold 2 - start training
+[2019-12-02 18:30:16] - logis-td-idf-all fold 2 - end training - score 0.4184177997527812
+[2019-12-02 18:30:16] - logis-td-idf-all fold 3 - start training
+[2019-12-02 18:30:16] - logis-td-idf-all fold 3 - end training - score 0.41089108910891087
+[2019-12-02 18:30:16] - logis-td-idf-all fold 4 - start training
+[2019-12-02 18:30:16] - logis-td-idf-all fold 4 - end training - score 0.39294554455445546
+[2019-12-02 18:30:16] - logis-td-idf-all fold 5 - start training
+[2019-12-02 18:30:16] - logis-td-idf-all fold 5 - end training - score 0.422029702970297
+[2019-12-02 18:30:16] - logis-td-idf-all - end training cv - score 0.41174399855824984
+[2019-12-02 18:34:23] - logis-td-idf-all - start training cv
+[2019-12-02 18:34:23] - logis-td-idf-all fold 0 - start training
+[2019-12-02 18:34:25] - logis-td-idf-all fold 0 - end training - score 0.4148148148148148
+[2019-12-02 18:34:25] - logis-td-idf-all fold 1 - start training
+[2019-12-02 18:34:25] - logis-td-idf-all fold 1 - end training - score 0.41136504014823966
+[2019-12-02 18:34:25] - logis-td-idf-all fold 2 - start training
+[2019-12-02 18:34:26] - logis-td-idf-all fold 2 - end training - score 0.4184177997527812
+[2019-12-02 18:34:26] - logis-td-idf-all fold 3 - start training
+[2019-12-02 18:34:26] - logis-td-idf-all fold 3 - end training - score 0.41089108910891087
+[2019-12-02 18:34:26] - logis-td-idf-all fold 4 - start training
+[2019-12-02 18:34:26] - logis-td-idf-all fold 4 - end training - score 0.39294554455445546
+[2019-12-02 18:34:26] - logis-td-idf-all fold 5 - start training
+[2019-12-02 18:34:26] - logis-td-idf-all fold 5 - end training - score 0.422029702970297
+[2019-12-02 18:34:26] - logis-td-idf-all - end training cv - score 0.41174399855824984
+[2019-12-02 18:37:35] - bow - bestscore : 0.51602266872746
+[2019-12-02 18:37:35] - bow_nva - bestscore : 0.4784528063905823
+[2019-12-02 18:37:35] - bow_tf-idf - bestscore : 0.40844925296239054
+[2019-12-02 19:28:44] - bow - bestscore : 0.4733642452344152
+[2019-12-02 19:28:44] - bow_nva - bestscore : 0.4563800714736178
+[2019-12-02 19:28:44] - bow_tf-idf - bestscore : 0.48830499742400824
+[2019-12-02 19:31:32] - bow - bestscore : 0.4733642452344152
+[2019-12-02 19:31:32] - bow_nva - bestscore : 0.4563800714736178
+[2019-12-02 19:31:32] - bow_tf-idf - bestscore : 0.48830499742400824
+[2019-12-02 19:34:21] - logis1 - start training cv
+[2019-12-02 19:34:21] - logis1 fold 0 - start training
+[2019-12-02 19:34:27] - logis1 fold 0 - end training - score 0.46358024691358024
+[2019-12-02 19:34:27] - logis1 fold 1 - start training
+[2019-12-02 19:34:31] - logis1 fold 1 - end training - score 0.42927733168622606
+[2019-12-02 19:34:31] - logis1 fold 2 - start training
+[2019-12-02 19:34:34] - logis1 fold 2 - end training - score 0.4542645241038319
+[2019-12-02 19:34:35] - logis1 fold 3 - start training
+[2019-12-02 19:34:38] - logis1 fold 3 - end training - score 0.4560643564356436
+[2019-12-02 19:34:38] - logis1 fold 4 - start training
+[2019-12-02 19:34:43] - logis1 fold 4 - end training - score 0.45544554455445546
+[2019-12-02 19:34:43] - logis1 fold 5 - start training
+[2019-12-02 19:34:47] - logis1 fold 5 - end training - score 0.4746287128712871
+[2019-12-02 19:34:47] - logis1 - end training cv - score 0.45554345276083735
+[2019-12-02 19:35:54] - logis1 - start training cv
+[2019-12-02 19:35:54] - logis1 fold 0 - start training
+[2019-12-02 19:36:15] - logis1 fold 0 - end training - score 0.4685185185185185
+[2019-12-02 19:36:15] - logis1 fold 1 - start training
+[2019-12-02 19:36:25] - logis1 fold 1 - end training - score 0.4478072884496603
+[2019-12-02 19:36:25] - logis1 fold 2 - start training
+[2019-12-02 19:36:34] - logis1 fold 2 - end training - score 0.4437577255871446
+[2019-12-02 19:36:34] - logis1 fold 3 - start training
+[2019-12-02 19:36:44] - logis1 fold 3 - end training - score 0.46472772277227725
+[2019-12-02 19:36:44] - logis1 fold 4 - start training
+[2019-12-02 19:36:53] - logis1 fold 4 - end training - score 0.4405940594059406
+[2019-12-02 19:36:53] - logis1 fold 5 - start training
+[2019-12-02 19:37:03] - logis1 fold 5 - end training - score 0.47277227722772275
+[2019-12-02 19:37:03] - logis1 - end training cv - score 0.45636293199354405
+[2019-12-02 19:52:22] - logis1 - start training cv
+[2019-12-02 19:52:22] - logis1 fold 0 - start training
+[2019-12-02 19:52:28] - logis1 fold 0 - end training - score 0.48333333333333334
+[2019-12-02 19:52:28] - logis1 fold 1 - start training
+[2019-12-02 19:52:32] - logis1 fold 1 - end training - score 0.4688079061148857
+[2019-12-02 19:52:32] - logis1 fold 2 - start training
+[2019-12-02 19:52:37] - logis1 fold 2 - end training - score 0.48022249690976515
+[2019-12-02 19:52:37] - logis1 fold 3 - start training
+[2019-12-02 19:52:41] - logis1 fold 3 - end training - score 0.46905940594059403
+[2019-12-02 19:52:41] - logis1 fold 4 - start training
+[2019-12-02 19:52:45] - logis1 fold 4 - end training - score 0.48205445544554454
+[2019-12-02 19:52:45] - logis1 fold 5 - start training
+[2019-12-02 19:52:50] - logis1 fold 5 - end training - score 0.48948019801980197
+[2019-12-02 19:52:50] - logis1 - end training cv - score 0.4788262992939874
+[2019-12-02 20:39:26] - logis-term3-gram - start training cv
+[2019-12-02 20:39:26] - logis-term3-gram fold 0 - start training
+[2019-12-02 20:39:48] - logis-term3-gram fold 0 - end training - score 0.48333333333333334
+[2019-12-02 20:39:48] - logis-term3-gram fold 1 - start training
+[2019-12-02 20:40:09] - logis-term3-gram fold 1 - end training - score 0.4688079061148857
+[2019-12-02 20:40:09] - logis-term3-gram fold 2 - start training
+[2019-12-02 20:40:31] - logis-term3-gram fold 2 - end training - score 0.48022249690976515
+[2019-12-02 20:40:31] - logis-term3-gram fold 3 - start training
+[2019-12-02 20:40:51] - logis-term3-gram fold 3 - end training - score 0.46905940594059403
+[2019-12-02 20:40:51] - logis-term3-gram fold 4 - start training
+[2019-12-02 20:41:13] - logis-term3-gram fold 4 - end training - score 0.48205445544554454
+[2019-12-02 20:41:13] - logis-term3-gram fold 5 - start training
+[2019-12-02 20:41:37] - logis-term3-gram fold 5 - end training - score 0.48948019801980197
+[2019-12-02 20:41:37] - logis-term3-gram - end training cv - score 0.4788262992939874
+[2019-12-03 11:36:52] - logis1 - start training cv
+[2019-12-03 11:36:52] - logis1 fold 0 - start training
+[2019-12-03 11:37:05] - logis1 fold 0 - end training - score 0.15617283950617283
+[2019-12-03 11:37:05] - logis1 fold 1 - start training
+[2019-12-03 11:37:17] - logis1 fold 1 - end training - score 0.1605929586164299
+[2019-12-03 11:37:17] - logis1 fold 2 - start training
+[2019-12-03 11:37:30] - logis1 fold 2 - end training - score 0.16131025957972805
+[2019-12-03 11:37:30] - logis1 fold 3 - start training
+[2019-12-03 11:37:42] - logis1 fold 3 - end training - score 0.1577970297029703
+[2019-12-03 11:37:42] - logis1 fold 4 - start training
+[2019-12-03 11:37:54] - logis1 fold 4 - end training - score 0.16027227722772278
+[2019-12-03 11:37:54] - logis1 fold 5 - start training
+[2019-12-03 11:38:08] - logis1 fold 5 - end training - score 0.1875
+[2019-12-03 11:38:08] - logis1 - end training cv - score 0.16394089410550397
