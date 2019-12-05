@@ -260,8 +260,22 @@ class Runner:
                 matrix = np.load('../vec/bow_train_x_3-gram.npy', allow_pickle = True)
                 self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
             elif self.features == "word2vec_mean":
-                self.train_x = np.load('../vec/word2vec_mean_x.npy', allow_pickle = True)
-
+                self.train_x = np.load('../vec/word2vec_min1_x.npy', allow_pickle = True)
+            elif self.features == "word2vec_pre_mean":
+                self.train_x = np.load('../vec/word2vec_pre_x.npy', allow_pickle = True)
+            elif self.features == "word2vec_fine-tuning":
+                self.train_x = np.load('../vec/word2vec_fine-tuning-iter25_x.npy', allow_pickle=True)
+            elif self.features == "word2vec_fine-tuning-iter5":
+                self.train_x = np.load('../vec/word2vec_fine-tuning-iter5_x.npy', allow_pickle=True)
+            elif self.features == "doc2vec":
+                self.train_x = np.load('../vec/doc2vec_x.npy', allow_pickle=True)
+            elif self.features == "scdv":
+                matrix = np.load('../vec/word2vec_scdv_x.npy', allow_pickle=True)
+                self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
+            elif self.features == "mix":
+                l = sparse.csr_matrix(np.load('../vec/bow_train_x_tf-idf.npy', allow_pickle = True),dtype=np.float64)
+                r = sparse.csr_matrix(np.load('../vec/bow_train_x_3-gram.npy', allow_pickle=True),dtype=np.float64)
+                self.train_x = sparse.hstack([l, r], format='csr')
         return self.train_x
 
     def load_y_train(self) -> np.array:
@@ -270,19 +284,10 @@ class Runner:
         """
         # 目的変数の読込を行う
         if self.train_y is None:
-            if self.features == "bow":
-                self.train_y = np.load('../vec/bow_train_y.npy', allow_pickle = True)
-            elif self.features == "bow_nva":
+            if self.features == "bow_nva":
                 self.train_y = np.load('../vec/bow_train_y_nva.npy', allow_pickle = True)
-            elif self.features == "bow_tf-idf":
-                self.train_y = np.load('../vec/bow_train_y_tf-idf.npy', allow_pickle = True)
-            elif self.features == "term_2-gram":
-                self.train_y = np.load('../vec/bow_train_y_2-gram.npy', allow_pickle = True)
-            elif self.features == "term_3-gram":
-                self.train_y = np.load('../vec/bow_train_y_3-gram.npy', allow_pickle = True)
-            elif self.features == "word2vec_mean":
-                self.train_y = np.load('../vec/word2vec_mean_y.npy', allow_pickle = True)
-                
+            else:
+                self.train_y = np.load('../vec/y_full.npy', allow_pickle=True)
         return self.train_y
 
     def load_x_test(self) -> np.array:

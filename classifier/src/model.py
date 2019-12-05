@@ -43,11 +43,11 @@ class Model(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def save_model(self) -> None:
+    def save_model(self, feature: str) -> None:
         """モデルの保存を行う"""
         pass
 
     @abstractmethod
-    def load_model(self) -> None:
+    def load_model(self, feature: str) -> None:
         """モデルの読み込みを行う"""
         pass

@@ -40,11 +40,17 @@ if __name__ == '__main__':
     param_grid_ = { 'C' : [1e-5, 1e-3, 1e-1, 1e0, 1e1, 1e2 ]  }
 
     PATH = [
-        ('../vec/bow_train_x.npy', '../vec/bow_train_y.npy', "bow"),
+        ('../vec/bow_train_x.npy', '../vec/y_full.npy', "bow"),
         ('../vec/bow_train_x_nva.npy', '../vec/bow_train_y_nva.npy', "bow_nva"),
-        ('../vec/bow_train_x_tf-idf.npy', '../vec/bow_train_y_tf-idf.npy', "bow_tf-idf"),
-        ('../vec/bow_train_x_2-gram.npy', '../vec/bow_train_y_2-gram.npy', "term_2-gram"),
+        ('../vec/bow_train_x_tf-idf.npy', '../vec/y_full.npy', "bow_tf-idf"),
+        ('../vec/bow_train_x_2-gram.npy', '../vec/y_full.npy', "term_2-gram"),
+        ('../vec/bow_train_x_3-gram.npy', '../vec/y_full.npy', "term_3-gram"),
+        ('../vec/word2vec_min5_x.npy', '../vec/y_full.npy', "term_3-gram")
     ]
+    for x_path, y_path, name in PATH:
+        y = np.load(y_path, allow_pickle = True)
+        print(y.shape)
+    exit(0)
 
     results = [ ]
     for x_path, y_path, name in PATH:
