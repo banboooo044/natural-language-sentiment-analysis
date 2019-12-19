@@ -1,6 +1,21 @@
 # natural-language-sentiment-analysis
-元データ : data/corpus.tsv
-## 学習済みモデルのダウンロード
+
+## 1. セットアップ方法
+github上には, メモリの関係上元データしかアップしていないので, 以下の手順でプログラムを実行することで復元できる.
+
+1. 学習済みモデルのダウンロードし, 指定の置き場所にファイルを置く.
+2. 以下のようにプログラムを実行
+  ```bash
+    bash data/setup.sh
+  ```
+3. 以下のようにプログラムを実行
+  ```bash
+    bash vec/setup.sh
+  ```
+
+(元データ : data/corpus.tsv)
+
+## 2. 学習済みモデルのダウンロード
 * Word2vec
 「東北大学 乾・岡崎研究室の公開モデル」
   - http://www.cl.ecei.tohoku.ac.jp/~m-suzuki/jawiki_vector/
@@ -25,17 +40,20 @@
 
   置き場所: classifier/vec/jawiki.doc2vec.dbow300d, classifier/vec/jawiki.doc2vec.dmpv300d
 
-## 前処理, 特徴量作成等
+## 3. 前処理, 特徴量作成等
 
 ### data/
 
 * preprocess.py : 前処理
+
   出力ファイル : corpus-pre.tsv
 
 * mecab_wakati.py : 分かち書き
+
   出力ファイル : corpus-wakati-mecab.tsv
 
 * juman_wakati.py : 分かち書き
+
   出力ファイル : corpus-wakati-juman.tsv
 
 JUMANの方が精度が良いので以降の分析ではこちらを使っている.
@@ -43,23 +61,37 @@ JUMANの方が精度が良いので以降の分析ではこちらを使ってい
 ### vec/
 
 * create_label.py : 感情ラベルの行列を作成
+  
   出力ファイル : y_full.npy
-* bow.py : 単語文章行列, n-gram行列の特徴量をs悪性
+* bow.py : 単語文章行列, n-gram行列の特徴量を作成
+
   出力ファイル : bow_train_x.npz, n-gram_x.npz
+
 * bow-tf-idf.py : tf-idfの行列, n-gram+td-idfの行列の特徴量を作成
+
   出力ファイル : tf-idf_x.npz, n-gram-tf-idf_x.npz
+
 * get_embedding_matrix.py : word2vec, fasttext の average, max, hier 特徴量を作成
+
   出力ファイル : [name]_aver.npy, [name]_max.npy, [name]_hier.npy
+
 * get_doc2vec_matrix.py : doc2vec(PV-DM, PV-DBOW)の特徴量を作成
+
   出力ファイル : doc2vec-dbow.npy, doc2vec-dmpv.npy
+
 * get_scdv.py : scdvの特徴量を作成
+
   出力ファイル : fasttext_scdv.npy
+
 * sdv.py : sdv(極性辞書を使う方法)の特徴量を作成
+
   出力ファイル : sdv.npy
 
-## Twitter Corpus 
+## 4. 実験(Twitter Corpus)
+
 * 評価方法: stratified 6 - fold
 * 評価指標 : mean-F1
+
 ### (a). 単語カウント, 単語分散表現
 | | Naive Beys(M / G) | Logistic Regression | LightGBM | MLP |
 |-| ----------------- | --------------------| -------- | --- |
@@ -89,15 +121,14 @@ JUMANの方が精度が良いので以降の分析ではこちらを使ってい
 |Doc2vec(PV-DM)   | | 0.4063 | 0.4007 | 0.4050 |
 |Doc2vec(concat) | - | 0.4688 | 0.46 | 0.4630 |
 
-* BERTは本来fine-tuningして用いるものだが, 文章の先頭につけるタグ[CLS]が文章に対応する分散表現を獲得しているとみなして用いた.
-
 ### (c). Deep Model
 
 | | Score |
----- | --- |
+|---- | --- |
 | LSTM(+fasttext) | 0.50552 |
 | Bi-LSTM(+fasttext) | 0.51336 |
 | GRU(+fasttext) | 0.50975 |
 
 
 LSTM, Bi-LSTM, GRU のEmbedding層にはfasttextで得た分散表現を使用.学習を行わないようにした.
+
