@@ -10,6 +10,7 @@ from typing import Callable, List, Optional, Tuple, Union
 from src.util import Logger, Util
 from sklearn.model_selection import learning_curve
 from scipy import sparse
+from scipy.sparse import load_npz
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
@@ -239,55 +240,69 @@ class Runner:
         """学習データの特徴量を読み込む
         :return: 学習データの特徴量
         """
-        
         # 学習データの読込を行う
         # 列名で抽出する以上のことを行う場合、このメソッドの修正が必要
         # 毎回train.csvを読み込むのは効率が悪いため、データに応じて適宜対応するのが望ましい（他メソッドも同様）
         if self.train_x is None:
             if self.features == "bow":
-                matrix = np.load('../vec/bow_train_x.npy', allow_pickle = True)
-                self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
-            elif self.features == "bow_nva":
-                matrix = np.load('../vec/bow_train_x_nva.npy', allow_pickle = True)
-                self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
-            elif self.features == "bow_tf-idf":
-                matrix = np.load('../vec/bow_train_x_tf-idf.npy', allow_pickle = True)
-                self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
-            elif self.features == "term_2-gram":
-                matrix = np.load('../vec/bow_train_x_2-gram.npy', allow_pickle = True)
-                self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
-            elif self.features == "term_3-gram":
-                matrix = np.load('../vec/bow_train_x_3-gram.npy', allow_pickle = True)
-                self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
+                self.train_x =load_npz('../vec/bow_train_x.npz').astype('float64')
+            elif self.features == "n-gram":
+                self.train_x =load_npz('../vec/n-gram_x.npz').astype('float64')
+            elif self.features == "tf-idf":
+                self.train_x = load_npz('../vec/tf-idf_x.npz').astype('float64')
+            elif self.features == "n-gram-tf-idf":
+                self.train_x =load_npz('../vec/n-gram-tf-idf_x.npz').astype('float64')
             elif self.features == "word2vec_mean":
-                self.train_x = np.load('../vec/word2vec_min1_x.npy', allow_pickle = True)
-            elif self.features == "word2vec_pre_mean":
-                self.train_x = np.load('../vec/word2vec_pre_x.npy', allow_pickle = True)
-            elif self.features == "word2vec_fine-tuning":
-                self.train_x = np.load('../vec/word2vec_fine-tuning-iter25_x.npy', allow_pickle=True)
-            elif self.features == "word2vec_fine-tuning-iter5":
-                self.train_x = np.load('../vec/word2vec_fine-tuning-iter5_x.npy', allow_pickle=True)
-            elif self.features == "doc2vec":
+                self.train_x = np.load('../vec/word2vec_x_mean.npy', allow_pickle = True)
+            elif self.features == "word2vec_max":
+                self.train_x = np.load('../vec/word2vec_x_max.npy', allow_pickle = True)
+            elif self.features == "word2vec_concat":
+                l = np.load('../vec/word2vec_x_mean.npy', allow_pickle = True)
+                r = np.load('../vec/word2vec_x_max.npy', allow_pickle = True)
+                self.train_x = np.hstack((l, r))
+            elif self.features == "word2vec_hier":
+                self.train_x = np.load('../vec/word2vec_x_hier.npy', allow_pickle = True)
+            elif self.features == "fasttext_mean":
+                self.train_x = np.load('../vec/fasttext_x_mean.npy', allow_pickle = True)
+            elif self.features == "fasttext_max":
+                self.train_x = np.load('../vec/fasttext_x_max.npy', allow_pickle = True)
+            elif self.features == "fasttext_concat":
+                l = np.load('../vec/fasttext_x_mean.npy', allow_pickle = True)
+                r = np.load('../vec/fasttext_x_max.npy', allow_pickle = True)
+                self.train_x = np.hstack((l, r))
+            elif self.features == "fasttext_hier":
+                self.train_x = np.load('../vec/fasttext_x_hier.npy', allow_pickle = True)
+            elif self.features == "doc2vec-dbow":
                 self.train_x = np.load('../vec/doc2vec_x.npy', allow_pickle=True)
+            elif self.features == "doc2vec-dmpv":
+                self.train_x = np.load('../vec/doc2vec-dmpv_x.npy', allow_pickle=True)
+            elif self.features == "doc2vec-concat":
+                l = np.load('../vec/doc2vec_x.npy', allow_pickle=True)
+                r = np.load('../vec/doc2vec-dmpv_x.npy', allow_pickle=True)
+                self.train_x = np.hstack((l, r))
             elif self.features == "scdv":
-                matrix = np.load('../vec/word2vec_scdv_x.npy', allow_pickle=True)
-                self.train_x = sparse.csr_matrix(matrix, dtype=np.float64)
-            elif self.features == "mix":
-                l = sparse.csr_matrix(np.load('../vec/bow_train_x_tf-idf.npy', allow_pickle = True),dtype=np.float64)
-                r = sparse.csr_matrix(np.load('../vec/bow_train_x_3-gram.npy', allow_pickle=True),dtype=np.float64)
-                self.train_x = sparse.hstack([l, r], format='csr')
+                self.train_x = np.load('../vec/fasttext_mean_scdv_x.npy', allow_pickle=True)
+            elif self.features == "sdv":
+                self.train_x = np.load('../vec/sdv.npy', allow_pickle=True)
+            elif self.features == "sdv1":
+                self.train_x = np.load('../vec/sdv1.npy', allow_pickle=True)
+            elif self.features == "sdv2":
+                self.train_x = np.load('../vec/sdv2.npy', allow_pickle=True)
+            elif self.features == "bert":
+                self.train_x = np.load('../vec/bert_x.npy', allow_pickle=True)
+            elif self.features == "raw_text":
+                df = pd.read_table("../data/train-val-pre.tsv", index_col=0)
+                self.train_x = np.array(df["text"], dtype=str)
+                self.train_y = np.array(df["label"], dtype=int)
         return self.train_x
-
+    
     def load_y_train(self) -> np.array:
         """学習データの目的変数を読み込む
         :return: 学習データの目的変数
         """
         # 目的変数の読込を行う
         if self.train_y is None:
-            if self.features == "bow_nva":
-                self.train_y = np.load('../vec/bow_train_y_nva.npy', allow_pickle = True)
-            else:
-                self.train_y = np.load('../vec/y_full.npy', allow_pickle=True)
+            self.train_y = np.load('../vec/y_full.npy', allow_pickle=True).astype('int')
         return self.train_y
 
     def load_x_test(self) -> np.array:
@@ -301,7 +316,7 @@ class Runner:
                 matrix = np.load('../vec/bow_test_x_nva.npy', allow_pickle = True)   
             self.test_x = sparse.csr_matrix(matrix, dtype=np.float64)
         return self.test_x
-
+    
     def load_index_fold(self, i_fold: int) -> np.array:
         """クロスバリデーションでのfoldを指定して対応するレコードのインデックスを返す
         :param i_fold: foldの番号

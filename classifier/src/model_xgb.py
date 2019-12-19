@@ -1,8 +1,6 @@
 import os,sys
 sys.path.append('../')
 
-import os
-
 import numpy as np
 import pandas as pd
 import xgboost as xgb

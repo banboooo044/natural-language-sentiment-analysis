@@ -1,13 +1,23 @@
+# tf-idf, tf-idf + n-gram行列
+
+import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-import numpy as np
+from scipy.sparse import save_npz
 
-PATH = "../data/train-val-wakati-juman.tsv"
+# 分かち書きされたデータを読み込む
+PATH = "../data/courpus-wakati-juman.tsv"
 df = pd.read_table(PATH, index_col=0)
 df = df[~pd.isnull(df["text"])]
 
-Tfidf_cv = TfidfVectorizer()
-matrix =  Tfidf_cv.fit_transform(df["text"])
+# tf-idf
+cv = TfidfVectorizer()
+matrix =  cv.fit_transform(df["text"])
 
-np.save("./bow_train_x_tf-idf.npy", matrix.toarray())
-np.save("./bow_train_y_tf-idf.npy", np.array(df["label"]))
+# tf-idf + n-gram
+cv_n = TfidfVectorizer(ngram_range=(1,3), min_df=2)
+matrix_n = cv_n.fit_transform(df["text"])
+
+# 保存
+save_npz('../vec/tf-idf_x.npz', matrix)
+save_npz('../vec/n-gram-tf-idf_x.npz', matrix_n)

@@ -5,7 +5,7 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn.externals import joblib
-
+from scipy.sparse import load_npz
 
 class Util:
     @classmethod
@@ -56,6 +56,67 @@ class Logger:
 
     def to_ltsv(self, dic):
         return '\t'.join(['{}:{}'.format(key, value) for key, value in dic.items()])
+
+def load_x_train(features, sparse=False):
+    if features == "bow":
+        matrix =load_npz('../vec/bow_train_x.npz').astype('float64')
+    elif features == "n-gram":
+        matrix = load_npz('../vec/n-gram_x.npz').astype('float64')
+    elif features == "tf-idf":
+        matrix = load_npz('../vec/tf-idf_x.npz').astype('float64')
+    elif features == "n-gram-tf-idf":
+        matrix = load_npz('../vec/n-gram-tf-idf_x.npz').astype('float64')
+    elif features == "word2vec_mean":
+        matrix = np.load('../vec/word2vec_x_mean.npy', allow_pickle = True)
+    elif features == "word2vec_max":
+        matrix = np.load('../vec/word2vec_x_max.npy', allow_pickle = True)
+    elif features == "word2vec_concat":
+        l = np.load('../vec/word2vec_x_mean.npy', allow_pickle = True)
+        r = np.load('../vec/word2vec_x_max.npy', allow_pickle = True)
+        matrix = np.hstack((l, r))
+    elif features == "word2vec_hier":
+        matrix = np.load('../vec/word2vec_x_hier.npy', allow_pickle = True)
+    elif features == "fasttext_mean":
+        matrix = np.load('../vec/fasttext_x_mean.npy', allow_pickle = True)
+    elif features == "fasttext_max":
+        matrix = np.load('../vec/fasttext_x_max.npy', allow_pickle = True)
+    elif features == "fasttext_concat":
+        l = np.load('../vec/fasttext_x_mean.npy', allow_pickle = True)
+        r = np.load('../vec/fasttext_x_max.npy', allow_pickle = True)
+        matrix = np.hstack((l, r))
+    elif features == "fasttext_hier":
+        matrix = np.load('../vec/fasttext_x_hier.npy', allow_pickle = True)
+    elif features == "doc2vec-dbow":
+        matrix = np.load('../vec/doc2vec_x.npy', allow_pickle=True)
+    elif features == "doc2vec-dmpv":
+        matrix = np.load('../vec/doc2vec-dmpv_x.npy', allow_pickle=True)
+    elif features == "doc2vec-concat":
+        l = np.load('../vec/doc2vec_x.npy', allow_pickle=True)
+        r = np.load('../vec/doc2vec-dmpv_x.npy', allow_pickle=True)
+        matrix = np.hstack((l, r))
+    elif features == "scdv":
+        matrix = np.load('../vec/fasttext_mean_scdv_x.npy', allow_pickle=True)
+    elif features == "sdv":
+        matrix = np.load('../vec/sdv.npy', allow_pickle=True)
+    elif features == "sdv1":
+        matrix = np.load('../vec/sdv1.npy', allow_pickle=True)
+    elif features == "sdv2":
+        matrix = np.load('../vec/sdv2.npy', allow_pickle=True)
+    elif features == "bert":
+        matrix = np.load('../vec/bert_x.npy', allow_pickle=True)
+    elif features == "raw_text":
+        df = pd.read_table("../data/train-val_pre.tsv", index_col=0)
+        matrix = np.array(df["text"], dtype=str)
+    return matrix
+
+def load_y_train(features):
+    if features == "bow_nva":
+        return np.load('../vec/bow_train_y_nva.npy', allow_pickle = True)
+    elif features == "raw_text":
+        df = pd.read_table("../data/train-val_pre.tsv", index_col=0)
+        return np.array(df["label"], dtype=int)
+    else:
+        return np.load('../vec/y_full.npy', allow_pickle=True).astype('int')
 
 """
 class Submission:

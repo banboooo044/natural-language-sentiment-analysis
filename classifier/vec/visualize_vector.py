@@ -1,3 +1,4 @@
+# T-SNEを用いた文章分散表現の可視化
 import sys, os
 sys.path.append('../')
 

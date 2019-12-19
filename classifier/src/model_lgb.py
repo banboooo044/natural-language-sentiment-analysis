@@ -10,7 +10,7 @@ import lightgbm as lgb
 from src.model import Model
 from src.util import Util
 
-from sklearn.metrics import log_loss, accuracy_score
+from sklearn.metrics import log_loss, accuracy_score, f1_score, classification_report
 
 class ModelLGB(Model):
     def __init__(self, run_fold_name, **params):
@@ -42,8 +42,10 @@ class ModelLGB(Model):
         return self.model.predict(te_x, ntree_limit=self.model.best_iteration)
 
     def score(self, te_x, te_y):
-        pred_prob = self.model.predict(te_x, ntree_limit=self.model.best_iteration)
-        return accuracy_score(te_y, np.argmax(pred_prob, axis=1))
+        pred_prob = self.predict(te_x)
+        y_pred = np.argmax(pred_prob, axis=1)
+        print(classification_report(te_y, y_pred))
+        return f1_score(np.identity(5)[te_y], np.identity(5)[y_pred], average='samples')
 
         ## 2 class
         #pred_prob[pred_prob > 0.5] = 1

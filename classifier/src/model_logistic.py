@@ -12,9 +12,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.estimator_checks import check_estimator
+from sklearn.metrics import accuracy_score, f1_score, classification_report,  precision_recall_curve
+
+from scipy.sparse import issparse
 
 class ModelLogistic(Model, BaseEstimator, ClassifierMixin):
-    def __init__(self, run_fold_name, penalty='l2',dual=False, tol=0.0001, C=1.0, fit_intercept=True, 
+    def __init__(self, run_fold_name, penalty='l2', dual=False, tol=0.0001, C=1.0, fit_intercept=True, 
                     intercept_scaling=1, class_weight=None, random_state=None, solver='warn', max_iter=100, 
                         multi_class='warn', verbose=0, warm_start=False, n_jobs=None, l1_ratio=None):
         params = {
@@ -39,7 +42,11 @@ class ModelLogistic(Model, BaseEstimator, ClassifierMixin):
         
     def train(self, tr_x, tr_y, va_x=None, va_y=None):
         # データのセット
-        scaler = StandardScaler(with_mean=False)
+        if issparse(tr_x):
+            scaler = StandardScaler(with_mean=False)
+        else:
+            scaler = StandardScaler()
+
         scaler_sc = scaler.fit(tr_x)
         tr_x = scaler_sc.transform(tr_x)
         self.model = self.model.fit(tr_x, tr_y)
@@ -50,10 +57,13 @@ class ModelLogistic(Model, BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, te_x):
+        te_x = self.scaler.transform(te_x)
         return self.model.predict(te_x)
 
     def score(self, te_x, te_y):
-        return self.model.score(te_x, te_y)
+        y_pred = self.predict(te_x)
+        print(classification_report(te_y, y_pred))
+        return f1_score(np.identity(5)[te_y], np.identity(5)[y_pred], average='samples')
 
     def get_params(self, deep=True):
         dic = self.model.get_params(deep)

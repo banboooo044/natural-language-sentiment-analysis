@@ -1,14 +1,23 @@
+# 単語文章行列, n-gram行列
+
+import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import StratifiedKFold
-import numpy as np
+from scipy.sparse import save_npz
 
-PATH = "../data/train-val-wakati-juman-nva.tsv"
+# 分かち書きされたデータを読み込む
+PATH = "../data/courpus-wakati-juman.tsv"
 df = pd.read_table(PATH, index_col=0)
 df = df[~pd.isnull(df["text"])]
 
+# 単語文章行列
 cv = CountVectorizer()
 matrix = cv.fit_transform(df["text"])
 
-np.save("./bow_train_x_nva.npy", matrix.toarray())
-np.save("./bow_train_y_nva.npy", np.array(df["label"]))
+# n-gram(n = 1,2,3) をvocabraryとする行列
+cv_n = CountVectorizer(ngram_range=(1,3), min_df=1)
+matrix_n = cv_n.fit_transform(df["text"])
+
+# 保存
+save_npz('../vec/bow_train_x.npz', matrix)
+save_npz('../vec/n-gram_x.npz', matrix_n)
