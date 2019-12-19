@@ -1,18 +1,21 @@
 # natural-language-sentiment-analysis
-文章からの感情解析
-
-## 学習済みモデル
+元データ : data/corpus.tsv
+## 学習済みモデルのダウンロード
 * Word2vec
 「東北大学 乾・岡崎研究室の公開モデル」
   - http://www.cl.ecei.tohoku.ac.jp/~m-suzuki/jawiki_vector/
   - 学習データ: 日本語Wikipedia
   - 200次元
 
+  置き場所: classifier/vec/word2vec_pre/entity_vector.model.bin
+
 * fasttext
 「@Hironsan さんの公開モデル」
   - https://qiita.com/Hironsan/items/513b9f93752ecee9e670
   - 学習データ: 日本語Wikipedia
   - 300次元
+  
+  置き場所: classifier/vec/fasttext_pre/fasttext.vec, classifier/vec/fasttext_pre/fasttext-neologd.vec
 
 * Doc2vec
 「Yuki Okuda さんの公開モデル」
@@ -20,17 +23,45 @@
   - 学習データ: 日本語Wikipedia
   - 300次元
 
-* BERT
-「京都大学 黒橋・河原研究室の公開モデル」
-   - http://nlp.ist.i.kyoto-u.ac.jp/index.php?BERT%E6%97%A5%E6%9C%AC%E8%AA%9EPretrained%E3%83%A2%E3%83%87%E3%83%AB
-   - 学習データ: 日本語Wikipedia
+  置き場所: classifier/vec/jawiki.doc2vec.dbow300d, classifier/vec/jawiki.doc2vec.dmpv300d
 
+## 前処理, 特徴量作成等
+
+### data/
+
+* preprocess.py : 前処理
+  出力ファイル : corpus-pre.tsv
+
+* mecab_wakati.py : 分かち書き
+  出力ファイル : corpus-wakati-mecab.tsv
+
+* juman_wakati.py : 分かち書き
+  出力ファイル : corpus-wakati-juman.tsv
+
+JUMANの方が精度が良いので以降の分析ではこちらを使っている.
+
+### vec/
+
+* create_label.py : 感情ラベルの行列を作成
+  出力ファイル : y_full.npy
+* bow.py : 単語文章行列, n-gram行列の特徴量をs悪性
+  出力ファイル : bow_train_x.npz, n-gram_x.npz
+* bow-tf-idf.py : tf-idfの行列, n-gram+td-idfの行列の特徴量を作成
+  出力ファイル : tf-idf_x.npz, n-gram-tf-idf_x.npz
+* get_embedding_matrix.py : word2vec, fasttext の average, max, hier 特徴量を作成
+  出力ファイル : [name]_aver.npy, [name]_max.npy, [name]_hier.npy
+* get_doc2vec_matrix.py : doc2vec(PV-DM, PV-DBOW)の特徴量を作成
+  出力ファイル : doc2vec-dbow.npy, doc2vec-dmpv.npy
+* get_scdv.py : scdvの特徴量を作成
+  出力ファイル : fasttext_scdv.npy
+* sdv.py : sdv(極性辞書を使う方法)の特徴量を作成
+  出力ファイル : sdv.npy
 
 ## Twitter Corpus 
 * 評価方法: stratified 6 - fold
 * 評価指標 : mean-F1
 ### (a). 単語カウント, 単語分散表現
-| | Naive Beys(M / G) | Logistic Regression | LightGBM | MLP
+| | Naive Beys(M / G) | Logistic Regression | LightGBM | MLP |
 ---- | --- | --- | --- | --- | --- |
 Bow | 0.487159(M) | 0.46375 | 0.492416 | 0.4592
 TF-IDF | 0.4540449(M) | 0.42702| 0.487880 | 0.45828
@@ -52,7 +83,7 @@ SDV | | 0.47653 |
 
 ### (b). 文章分散表現(直接求める)
 
-| | Naive Beys(G) | Logistic Regression | LightGBM | MLP
+| | Naive Beys(G) | Logistic Regression | LightGBM | MLP |
 ---- | --- | --- | --- | --- | --- |
 Doc2Vec(PV-DBOW) | 0.33048 | 0.4617 | 0.45683 | 0.4680
 Doc2vec(PV-DM)  | | 0.4063 | 0.4007 | 0.4050

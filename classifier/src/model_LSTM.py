@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from keras.callbacks import EarlyStopping
-from keras.layers import SpatialDropout1D, Bidirectional
+from keras.layers import SpatialDropout1D, Bidirectional, GlobalMaxPool1D
 from keras.layers.recurrent import LSTM
 from keras.layers.advanced_activations import ReLU, PReLU
 from keras.layers.core import Dense, Dropout
@@ -36,9 +36,8 @@ class ModelLSTM(Model):
 
     def train(self, tr_x, tr_y, va_x=None, va_y=None):
         """ 
-            tr_x : List[str] (example.) [ "I am happy", "hello" ]
+            tr_x : List[str]  (example.) [ "I am happy", "hello" ]
             tr_y : List[label]
-            embedding_model : gensim.models.KeyedVectors Object
         """
         # scaling
         validation = va_x is not None
@@ -57,20 +56,27 @@ class ModelLSTM(Model):
         optimizer_lr = self.params['optimizer']['lr']
         batch_size = int(self.params['batch_size'])
         nb_epoch = int(self.params['nb_epoch'])
+
+        # 学習済み単語Embedding
         embedding_model = self.params['embedding_model']
-        bidirectional = self.params['Bidirectional']
         use_pre_embedding = not (embedding_model is None)
 
-        # using keras tokenizer here
+        # 双方向にするか
+        bidirectional = self.params['Bidirectional']
+        
         self.token = Tokenizer(num_words=None)
+        # 1文章の単語数の上限
         self.max_len = 70
         if validation:
             self.token.fit_on_texts(list(tr_x) + list(va_x))
         else:
             self.token.fit_on_texts(list(tr_x))
 
+        # textを番号列に変換
         xtrain_seq = self.token.texts_to_sequences(tr_x)
+        # 長さ70に満たない文章のpaddingをする
         tr_x = pad_sequences(xtrain_seq, maxlen=self.max_len)
+        # カテゴリ番号に変換(一応やってる)
         tr_y = np_utils.to_categorical(tr_y, num_classes=nb_classes)
 
         if validation:
@@ -78,11 +84,13 @@ class ModelLSTM(Model):
             va_x = pad_sequences(xvalid_seq, maxlen=self.max_len)
             va_y = np_utils.to_categorical(va_y, num_classes=nb_classes)
 
+        # { word : idx } の辞書
         word_index = self.token.word_index
 
+        # 学習済み単語Embeddingを用いる場合
         if use_pre_embedding:
-            # create an embedding matrix
             vector_dim = embedding_model.vector_size
+            # Embedding層の初期パラメータを作成
             embedding_matrix = np.zeros((len(word_index) + 1, vector_dim))
             for word, i in tqdm(word_index.items()):
                 embedding_vector = embedding_model.wv[word]
@@ -105,9 +113,11 @@ class ModelLSTM(Model):
 
         self.model.add(SpatialDropout1D(embedding_dropout))
         if bidirectional:
-            self.model.add(Bidirectional(LSTM(300, dropout=lstm_dropout, recurrent_dropout=lstm_recurrent_dropout)))
+            self.model.add(Bidirectional(LSTM(300, dropout=lstm_dropout, recurrent_dropout=lstm_recurrent_dropout, return_sequences=True)))
         else:
-            self.model.add(LSTM(100, dropout=lstm_dropout, recurrent_dropout=lstm_recurrent_dropout))
+            self.model.add(LSTM(100, dropout=lstm_dropout, recurrent_dropout=lstm_recurrent_dropout, return_sequences=True))
+        self.model.add(GlobalMaxPool1D())
+        
         # 中間層
         for i in range(hidden_layers):
             self.model.add(Dense(hidden_units))
@@ -135,11 +145,10 @@ class ModelLSTM(Model):
         # 目的関数、評価指標などの設定
         self.model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-        # エポック数、アーリーストッピング
-        # あまりepochを大きくすると、小さい学習率のときに終わらないことがあるので注意
-        patience = 12
+        
         # 学習の実行
         if validation:
+            patience = 12
             early_stopping = EarlyStopping(monitor='val_loss', patience=patience,
                                             verbose=1, restore_best_weights=True)
             history = self.model.fit(tr_x, tr_y, epochs=nb_epoch, batch_size=batch_size, verbose=2,
@@ -159,7 +168,6 @@ class ModelLSTM(Model):
 
     def save_model(self, feature):
         model_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}.h5')
-        scaler_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}-scaler.pkl')
         os.makedirs(os.path.dirname(model_path), exist_ok=True)
         self.model.save(model_path)
 

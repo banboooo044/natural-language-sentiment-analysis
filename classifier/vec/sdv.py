@@ -45,7 +45,7 @@ def createVector(df, model):
     return sdv
 
 if __name__ == "__main__":
-    PATH = "../data/courpus-wakati-juman.tsv"
+    PATH = "../data/corpus-wakati-juman.tsv"
     df = pd.read_table(PATH, index_col=0)
     df = df[~pd.isnull(df["text"])]
     

@@ -22,16 +22,18 @@ def load_model(filename):
     return model
 
 if __name__ == "__main__":
-    PATH = "../data/courpus-wakati-juman.tsv"
+    PATH = "../data/corpus-wakati-juman.tsv"
     df = pd.read_table(PATH, index_col=0)
     df = df[~pd.isnull(df["text"])]
     token = df["text"].apply(lambda x: x.split(","))
 
+    model = KeyedVectors.load_word2vec_format('./fasttext_pre/fasttext.vec', binary=False)
+
     gmm_params = {'n_components' : 30,'covariance_type' : 'tied', 'init_params' : 'kmeans', 'max_iter' : 50 , 'random_state' : 71, 'verbose' : 2} 
     vt = SCDVVectorizer(embedding_size = 300, sparsity_percentage = 0.05, 
-                    gaussian_mixture_parameters=gmm_params, embedding_array = None)
+                    gaussian_mixture_parameters=gmm_params, embedding_model=model)
     vec = vt.fit_transform(token, l2_normalize=True)
 
     OUTPUT_FILENAME = "fasttext_scdv"
-    np.save(f"./{OUTPUT_FILENAME}_x.npy", vec)
+    np.save(f"./{OUTPUT_FILENAME}.npy", vec)
     

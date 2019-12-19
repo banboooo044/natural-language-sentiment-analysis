@@ -9,7 +9,6 @@ from sklearn.mixture import GaussianMixture
 import sklearn.base
 from tqdm import tqdm
 
-
 class SCDVVectorizer(sklearn.base.BaseEstimator):
     """ This is a model which is described in "SCDV : Sparse Composite Document Vectors using soft clustering over distributional representations"
     See https://arxiv.org/pdf/1612.06778.pdf for details
@@ -17,7 +16,7 @@ class SCDVVectorizer(sklearn.base.BaseEstimator):
     """
     def __init__(self, embedding_size: int, sparsity_percentage: float,
                     gaussian_mixture_parameters: Dict[Any, Any], dictionary_filter_parameters: Dict[Any, Any] =  {}, 
-                    word2vec_parameters: Dict[Any, Any] = {}, embedding_array: Optional[str] = None ) -> None:
+                    word2vec_parameters: Dict[Any, Any] = {}, embedding_model: Optional[str] = None ) -> None:
         """
         :param documents: documents for training.
         :param embedding_size: word embedding size.
@@ -26,13 +25,14 @@ class SCDVVectorizer(sklearn.base.BaseEstimator):
         :param word2vec_parameters: parameters to build `gensim.models.Word2Vec`. Please see `gensim.models.Word2Vec.__init__` for details.
         :param gaussian_mixture_parameters: parameters to build `sklearn.mixture.GaussianMixture`. Please see `sklearn.mixture.GaussianMixture.__init__` for details.
         :param dictionary_filter_parameters: parameters for `gensim.corpora.Dictionary.filter_extremes`. Please see `gensim.corpora.Dictionary.filter_extremes` for details.
+        :param embedding_model: pre-training embedding model.
         """
 
         self.embedding_size = embedding_size
         self.cluster_size = gaussian_mixture_parameters["n_components"]
         self.sparsity_percentage = sparsity_percentage
         self.word2vec_parameters = word2vec_parameters
-        self.embedding_array = embedding_array
+        self.embedding_model = embedding_model
         gaussian_mixture_parameters.pop("n_components", None)
         self.gaussian_mixture_parameters = gaussian_mixture_parameters
         self.dictionary_filter_parameters = dictionary_filter_parameters
@@ -40,10 +40,7 @@ class SCDVVectorizer(sklearn.base.BaseEstimator):
     def fit(self, documents: List[List[str]]):
         self._dictionary = self._build_dictionary(documents, self.dictionary_filter_parameters)
         vocabulary_size = len(self._dictionary.token2id)
-        if self.embedding_array is None:
-            self._word_embeddings = self._build_word_embeddings(documents, self._dictionary, self.embedding_size, self.word2vec_parameters)
-        else:
-            self._word_embeddings = np.load(self.embedding_array, allow_pickle=True)
+        self._word_embeddings = self._build_word_embeddings(documents, self._dictionary, self.embedding_size, self.word2vec_parameters, self.embedding_model)
     
         assert self._word_embeddings.shape == (vocabulary_size, self.embedding_size)
 
@@ -81,12 +78,15 @@ class SCDVVectorizer(sklearn.base.BaseEstimator):
         return d
 
     def _build_word_embeddings(self, documents: List[List[str]], dictionary: Dictionary, embedding_size: int,
-                                word2vec_parameters: Dict[Any, Any]) -> np.ndarray:
+                                word2vec_parameters: Dict[Any, Any], embedding_model: Optional[str] = None) -> np.ndarray:
         print("build word embeddings")
-        w2v = Word2Vec(documents, size=embedding_size, **word2vec_parameters)
-        embeddings = np.zeros((len(dictionary.token2id), w2v.vector_size))
+        if embedding_model is None:
+            model = Word2Vec(documents, size=embedding_size, **word2vec_parameters)
+        else:
+            model = embedding_model
+        embeddings = np.zeros((len(dictionary.token2id), model.vector_size))
         for token, idx in dictionary.token2id.items():
-            embeddings[idx] = w2v.wv[token]
+            embeddings[idx] = model.wv[token]
         return embeddings
 
     def _build_word_cluster_probabilities(self, word_embeddings: np.ndarray, cluster_size: int,

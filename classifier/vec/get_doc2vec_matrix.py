@@ -14,7 +14,7 @@ def createVector(df, model):
     return np.array([ np.array(model.infer_vector(text.split(","))) for idx, (text, _, _) in df.iterrows() ] )
 
 if __name__ == "__main__":
-    PATH = "../data/courpus-wakati-juman.tsv"
+    PATH = "../data/corpus-wakati-juman.tsv"
     df = pd.read_table(PATH, index_col=0)
     df = df[~pd.isnull(df["text"])]
 
@@ -32,4 +32,4 @@ if __name__ == "__main__":
         OUTPUT_FILENAME = input("[filename].model")
 
     x = createVector(df, model)
-    np.save(f"./{OUTPUT_FILENAME}_x.npy", x)
+    np.save(f"./{OUTPUT_FILENAME}.npy", x)

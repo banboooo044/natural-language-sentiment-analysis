@@ -18,7 +18,6 @@ from src.util import Util
 
 from scipy.sparse import issparse
 
-
 # tensorflowの警告抑制
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
@@ -30,7 +29,6 @@ class ModelMLP(Model):
         super().__init__(run_fold_name, params)
 
     def train(self, tr_x, tr_y, va_x=None, va_y=None):
-        # scaling
         validation = va_x is not None
 
         # パラメータ
@@ -46,19 +44,24 @@ class ModelMLP(Model):
         batch_size = int(self.params['batch_size'])
         nb_epoch = int(self.params['nb_epoch'])
 
+        # 標準化
         if issparse(tr_x):
             scaler = StandardScaler(with_mean=False)
         else:
             scaler = StandardScaler()
         scaler.fit(tr_x)
+
         tr_x = scaler.transform(tr_x)
         tr_y = np_utils.to_categorical(tr_y, num_classes=nb_classes)
         if validation:
             va_x =  scaler.transform(va_x)
             va_y = np_utils.to_categorical(va_y, num_classes=nb_classes)
 
+        self.scaler = scaler
+
+        # Sequentialモデルを定義
         self.model = Sequential()
-        # input layer
+        # input dropout
         self.model.add(Dropout(input_dropout, input_shape=(tr_x.shape[1],)))
         # 中間層
         for i in range(hidden_layers):
@@ -86,20 +89,17 @@ class ModelMLP(Model):
 
         # 目的関数、評価指標などの設定
         self.model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
-
-        # エポック数、アーリーストッピング
-        # あまりepochを大きくすると、小さい学習率のときに終わらないことがあるので注意
-        patience = 12
+        
         # 学習の実行
         if validation:
+            # 何epoch validation-score が更新されなければ中断するか
+            patience = 12
             early_stopping = EarlyStopping(monitor='val_loss', patience=patience,
                                             verbose=2, restore_best_weights=True)
             history = self.model.fit(tr_x, tr_y, epochs=nb_epoch, batch_size=batch_size, verbose=2,
                                 validation_data=(va_x, va_y), callbacks=[early_stopping])
         else:
             history = self.model.fit(tr_x, tr_y, nb_epoch=nb_epoch, batch_size=batch_size, verbose=2)
-
-        self.scaler = scaler
 
     def predict(self, te_x):
         te_x = self.scaler.fit_transform(te_x)
@@ -108,6 +108,7 @@ class ModelMLP(Model):
 
     def score(self, te_x, te_y):
         y_pred = self.predict(te_x)
+        #print(classification_report(te_y, y_pred))
         return f1_score(np.identity(5)[te_y], np.identity(5)[np.argmax(y_pred, axis=1)], average='samples')
 
     def save_model(self, feature):

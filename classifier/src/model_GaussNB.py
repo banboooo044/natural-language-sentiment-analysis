@@ -5,14 +5,14 @@ sys.path.append('../')
 import numpy as np
 import pandas as pd
 
-from src.model import Model
-from src.util import Util
-
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import GaussianNB
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.estimator_checks import check_estimator
 from sklearn.metrics import accuracy_score, f1_score
+
+from src.model import Model
+from src.util import Util
 
 class ModelGaussNB(Model, BaseEstimator, ClassifierMixin):
     def __init__(self, run_fold_name, priors=None, var_smoothing=1e-09):
@@ -24,7 +24,6 @@ class ModelGaussNB(Model, BaseEstimator, ClassifierMixin):
         self.model = GaussianNB(**self.params)
         
     def train(self, tr_x, tr_y, va_x=None, va_y=None):
-        # データのセット
         self.model = self.model.fit(tr_x, tr_y)
     
     def fit(self, tr_x, tr_y):

@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from keras.callbacks import EarlyStopping
-from keras.layers import SpatialDropout1D, Bidirectional
-from keras.layers.recurrent import LSTM, GRU
+from keras.layers import SpatialDropout1D, Bidirectional,GlobalMaxPool1D
+from keras.layers.recurrent import GRU
 from keras.layers.advanced_activations import ReLU, PReLU
 from keras.layers.core import Dense, Dropout
 from keras.layers.embeddings import Embedding
@@ -39,7 +39,6 @@ class ModelGRU(Model):
         """ 
             tr_x : List[str] (example.) [ "I am happy", "hello" ]
             tr_y : List[label]
-            embedding_model : gensim.models.KeyedVectors Object
         """
         # scaling
         validation = va_x is not None
@@ -58,8 +57,8 @@ class ModelGRU(Model):
         optimizer_lr = self.params['optimizer']['lr']
         batch_size = int(self.params['batch_size'])
         nb_epoch = int(self.params['nb_epoch'])
+        # 学習済み単語Embedding
         embedding_model = self.params['embedding_model']
-
         use_pre_embedding = not (embedding_model is None)
 
         # using keras tokenizer here
@@ -81,15 +80,16 @@ class ModelGRU(Model):
 
         word_index = self.token.word_index
 
+        # 学習済み単語Embeddingを用いる場合
         if use_pre_embedding:
-            # create an embedding matrix
+            # Embedding層の初期パラメータを作成
             vector_dim = embedding_model.vector_size
             embedding_matrix = np.zeros((len(word_index) + 1, vector_dim))
             for word, i in tqdm(word_index.items()):
                 embedding_vector = embedding_model.wv[word]
                 if embedding_vector is not None:
                     embedding_matrix[i] = embedding_vector
-            
+        
         self.model = Sequential()
         # input layer
         if use_pre_embedding:
@@ -106,7 +106,8 @@ class ModelGRU(Model):
 
         self.model.add(SpatialDropout1D(embedding_dropout))
         self.model.add(GRU(300, dropout=gru_dropout, recurrent_dropout=gru_recurrent_dropout, return_sequences=True))
-        self.model.add(GRU(300, dropout=gru_dropout, recurrent_dropout=gru_recurrent_dropout))
+        self.model.add(GRU(300, dropout=gru_dropout, recurrent_dropout=gru_recurrent_dropout, return_sequences=True))
+        self.model.add(GlobalMaxPool1D())
         # 中間層
         for i in range(hidden_layers):
             self.model.add(Dense(hidden_units))
@@ -133,12 +134,10 @@ class ModelGRU(Model):
 
         # 目的関数、評価指標などの設定
         self.model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
-
-        # エポック数、アーリーストッピング
-        # あまりepochを大きくすると、小さい学習率のときに終わらないことがあるので注意
-        patience = 12
+        
         # 学習の実行
         if validation:
+            patience = 12
             early_stopping = EarlyStopping(monitor='val_loss', patience=patience,
                                             verbose=1, restore_best_weights=True)
             history = self.model.fit(tr_x, tr_y, epochs=nb_epoch, batch_size=batch_size, verbose=2,

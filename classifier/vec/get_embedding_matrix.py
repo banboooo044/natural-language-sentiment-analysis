@@ -1,5 +1,14 @@
 # Word2vec, Fasttext の単語分散表現から文章分散表現を取得
 
+## 学習済みモデルをそのまま使う場合:
+## word2vec : python3 get_embedding_matrix word2vec
+## fasttext : python3 get_embedding_matrix fasttext
+## fasttext+neologd : python3 get_embedding_matrix fasttext-neologd
+
+## 自分で学習した [filename].model を使う場合
+## python3 get_embedding_matrix filename
+## modelファイルの形式によっては, 関数load_model をいじらないとダメかもしれない.
+
 import sys, re
 import numpy as np
 import pandas as pd
@@ -47,7 +56,7 @@ def createVector(df, model, num_features):
     return x_mean, x_max, x_hier
 
 if __name__ == "__main__":
-    PATH = "../data/courpus-wakati-juman.tsv"
+    PATH = "../data/corpus-wakati-juman.tsv"
     df = pd.read_table(PATH, index_col=0)
     df = df[~pd.isnull(df["text"])]
     token = df["text"].apply(lambda x: x.split(","))
@@ -72,6 +81,6 @@ if __name__ == "__main__":
 
     x_mean, x_max, x_hier = createVector(df, model, num_features=model.vector_size)
 
-    np.save(f"./{OUTPUT_FILENAME}_x_mean.npy", x_mean)
-    np.save(f"./{OUTPUT_FILENAME}_x_max.npy", x_max)
-    np.save(f"./{OUTPUT_FILENAME}_x_hier.npy", x_hier)
+    np.save(f"./{OUTPUT_FILENAME}_aver.npy", x_mean)
+    np.save(f"./{OUTPUT_FILENAME}_max.npy", x_max)
+    np.save(f"./{OUTPUT_FILENAME}_hier.npy", x_hier)

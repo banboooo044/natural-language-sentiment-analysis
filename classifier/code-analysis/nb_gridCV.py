@@ -1,3 +1,4 @@
+# 詳しい説明は同様のプログラム logis_gradCV.py を参照
 import sys
 sys.path.append('../')
 import numpy as np
@@ -12,7 +13,8 @@ from sklearn.metrics import make_scorer
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from src.util import load_x_train, load_y_train, Logger
+from src.runner import Runner
+from src.util import Logger
 from src.model_NB import ModelMultinomialNB
 
 
@@ -27,28 +29,24 @@ def makefig(result):
 
 
 if __name__ == '__main__':
-    params = {
+    base_params = {
         'alpha' : 1.0,
         'fit_prior' : True,
         'class_prior' : None
     }
-    params_NB = dict(params)
+    params_NB = dict(base_params)
     param_grid_ = {'alpha': [0.001, 0.01, 0.1, 1, 10, 100]}
 
-    #features = [
-    #    "bow","bow_nva","bow_tf-idf","term_2-gram","term_3-gram","word2vec_mean","word2vec_pre_mean",
-    #    "word2vec_fine-tuning", "doc2vec", "scdv", "bert"
-    #]
     features = [
         "bow", "n-gram","tf-idf", "n-gram-tf-idf"
     ]
-    #mll_scorer = make_scorer(lambda x,y: f1_score(x,y ,average='micro'), greater_is_better=False)
+
     results = [ ]
     NAME = ":".join(features)
     for name in features:
-        x = load_x_train(name)
-        y = load_y_train(name)
-        model = ModelMultinomialNB(name, **dict(params))
+        x = Runner.load_x_train(name)
+        y = Runner.load_y_train()
+        model = ModelMultinomialNB(name, **dict(params_NB))
         search = GridSearchCV( model, cv=6, param_grid=param_grid_ , return_train_score=True, verbose=10, refit=True )
         search.fit(x, y)
         results.append( (search, name) )
@@ -59,10 +57,10 @@ if __name__ == '__main__':
         orient='index', 
         columns=param_grid_['alpha']
     )
-    
-    makefig(res)
 
     for search, name in results:
         logger.info(f'{name} - bestscore : {search.best_score_}')
     
     res.to_csv(f'../model/tuning/{NAME}-NB.csv')
+
+    makefig(res)

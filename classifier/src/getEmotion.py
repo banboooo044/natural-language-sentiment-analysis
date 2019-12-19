@@ -1,3 +1,4 @@
+# 完成したシステムを使うプログラム (保留)
 import xgboost as xgb
 import torchtext
 from torchtext.vocab import Vectors

@@ -17,18 +17,16 @@ class ModelLGB(Model):
         super().__init__(run_fold_name, params)
 
     def train(self, tr_x, tr_y, va_x=None, va_y=None):
-        # データのセット
         validation = va_x is not None
         dtrain = lgb.Dataset(tr_x, label=tr_y)
         if validation:
             dvalid = lgb.Dataset(va_x, label=va_y)
 
-        # ハイパーパラメータの設定
         params = dict(self.params)
         num_round = params.pop('num_boost_round')
 
-        # 学習
         if validation:
+            # バリデーションデータが存在する場合, Eearly Stoppingを行う
             early_stopping_rounds = params.pop('early_stopping_rounds')
             watchlist = [dtrain, dvalid ]
             self.model = lgb.train(params, dtrain, num_round, valid_sets=watchlist,
@@ -44,13 +42,8 @@ class ModelLGB(Model):
     def score(self, te_x, te_y):
         pred_prob = self.predict(te_x)
         y_pred = np.argmax(pred_prob, axis=1)
-        print(classification_report(te_y, y_pred))
+        # print(classification_report(te_y, y_pred))
         return f1_score(np.identity(5)[te_y], np.identity(5)[y_pred], average='samples')
-
-        ## 2 class
-        #pred_prob[pred_prob > 0.5] = 1
-        #pred_prob[pred_prob <= 0.5] = 0
-        #return accuracy_score(te_y, pred_prob)
 
     def save_model(self, feature):
         model_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}.model')

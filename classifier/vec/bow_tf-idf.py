@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.sparse import save_npz
 
 # 分かち書きされたデータを読み込む
-PATH = "../data/courpus-wakati-juman.tsv"
+PATH = "../data/corpus-wakati-juman.tsv"
 df = pd.read_table(PATH, index_col=0)
 df = df[~pd.isnull(df["text"])]
 

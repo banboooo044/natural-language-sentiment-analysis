@@ -10,27 +10,9 @@ from src.model_LSTM import ModelLSTM
 
 from gensim.models import KeyedVectors
 
-# "bow", "bow_nva", "bow_tf-idf", "term_2-gram", "term_3-gram", "word2vec_mean", "word2vec_pre_mean", "word2vec_fine-tuning-iter25", "word2vec_fine-tuning-iter5", "doc2vec"
 
 if __name__ == '__main__':
-    params = {
-        'embedding_dropout' : 0.3,
-        'lstm_dropout' : 0.3,
-        'recurrent_dropout' : 0.3,
-        'hidden_layers': 3,
-        'hidden_units': 1024,
-        'hidden_activation': 'relu',
-        'hidden_dropout': 0.8,
-        'batch_norm': 'before_act',
-        'optimizer': {'type': 'adam', 'lr': 0.001},
-        'batch_size': 512,
-        'nb_epoch' : 100,
-        'embedding_model' : None,
-        'Bidirectional' : False
-    }
-
-    # NORMALLSTM
-    """#23
+    # LSTM
     params = {
         'embedding_dropout' : 0.3,
         'lstm_dropout' : 0.3,
@@ -46,13 +28,20 @@ if __name__ == '__main__':
         'embedding_model' : None,
         'Bidirectional' : False,
     }
+    #  双方向LSATM
+    #params = {
     
-    """
 
-    params['embedding_model'] = KeyedVectors.load("../vec/word2vec_fine-tuning-iter5.model")
+    #}
+
+    # fasttext.bin は compress.py　でボキャブラリを圧縮したファイル
+    params['embedding_model'] = KeyedVectors.load_word2vec_format('./fasttext.bin', binary=True)
     params_LSTM = dict(params)
     
+    # features には必ず raw_textを指定
     runner = Runner(run_name='LSTM1', model_cls=ModelLSTM, features="raw_text", params=params_LSTM)
+
+    # 1回だけ実行
+    # runner.train_fold(0)
+    # クロスバリデーションで実行
     runner.run_train_cv()
-    #runner.run_train_cv([ 100, 500, 1000, 2000, 5000, 6000, 7000, 8000])
-    #runner.run_predict_cv()

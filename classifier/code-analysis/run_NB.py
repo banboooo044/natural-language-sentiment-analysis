@@ -14,14 +14,15 @@ if __name__ == '__main__':
     }
 
     #### Best Parameters
-    # bow ->             { 'alpha' : 1.0 }
-    # tf-tdf ->          { 'alpha' : 1.0 }
-    # n-gram ->          { 'alpha' : 1.0 }
-    # ngram-tf-idf  ->   { 'alpha' : 0.1 }
+    bow =             { 'alpha' : 1.0 }
+    #tf-tdf =          { 'alpha' : 1.0 }
+    #n-gram =          { 'alpha' : 1.0 }
+    #ngram-tf-idf  =   { 'alpha' : 0.1 }
 
-    params['alpha'] = 0.1
+    params.update(bow)
     params_NB = dict(params)
-    runner = Runner(run_name='NB1', model_cls=ModelMultinomialNB, features='n-gram-tf-idf', params=params_NB)
+
+    # Naive Beys での分析
+    feature = "bow"
+    runner = Runner(run_name='NB1', model_cls=ModelMultinomialNB, features=feature, params=params_NB)
     runner.run_train_cv()
-    #runner.run_train_cv([ 100, 500, 1000, 2000, 5000, 6000, 7000, 8000])
-    #runner.run_predict_cv()

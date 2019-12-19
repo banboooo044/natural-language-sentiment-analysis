@@ -5,14 +5,14 @@ sys.path.append('../')
 import numpy as np
 import pandas as pd
 
-from src.model import Model
-from src.util import Util
-
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.estimator_checks import check_estimator
 from sklearn.metrics import accuracy_score, f1_score
+
+from src.model import Model
+from src.util import Util
 
 class ModelMultinomialNB(Model, BaseEstimator, ClassifierMixin):
     def __init__(self, run_fold_name, alpha=1.0, fit_prior=True, class_prior=None):
@@ -37,7 +37,9 @@ class ModelMultinomialNB(Model, BaseEstimator, ClassifierMixin):
 
     def score(self, te_x, te_y):
         y_pred = self.predict(te_x)
+        # print(classification_report(te_y, y_pred))
         return f1_score(np.identity(5)[te_y], np.identity(5)[y_pred], average='samples')
+        
 
     def get_params(self, deep=True):
         dic = self.model.get_params(deep)

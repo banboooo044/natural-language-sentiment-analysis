@@ -11,7 +11,6 @@ from src.util import Util
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.base import BaseEstimator, ClassifierMixin
-from sklearn.utils.estimator_checks import check_estimator
 from sklearn.metrics import accuracy_score, f1_score, classification_report,  precision_recall_curve
 
 from scipy.sparse import issparse
@@ -41,14 +40,16 @@ class ModelLogistic(Model, BaseEstimator, ClassifierMixin):
         self.model = LogisticRegression(**self.params)
         
     def train(self, tr_x, tr_y, va_x=None, va_y=None):
-        # データのセット
+        # 標準化 (x - mu) / sigma
         if issparse(tr_x):
+            # スパース行列の時は mu = 0 で近似
             scaler = StandardScaler(with_mean=False)
         else:
             scaler = StandardScaler()
-
         scaler_sc = scaler.fit(tr_x)
         tr_x = scaler_sc.transform(tr_x)
+
+        # モデルで学習
         self.model = self.model.fit(tr_x, tr_y)
         self.scaler = scaler
     
@@ -62,7 +63,7 @@ class ModelLogistic(Model, BaseEstimator, ClassifierMixin):
 
     def score(self, te_x, te_y):
         y_pred = self.predict(te_x)
-        print(classification_report(te_y, y_pred))
+        #print(classification_report(te_y, y_pred))
         return f1_score(np.identity(5)[te_y], np.identity(5)[y_pred], average='samples')
 
     def get_params(self, deep=True):
@@ -79,32 +80,14 @@ class ModelLogistic(Model, BaseEstimator, ClassifierMixin):
         return self
     
     def save_model(self, feature):
-        model_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}.model')
+        model_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}.h5')
+        scaler_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}-scaler.pkl')
         os.makedirs(os.path.dirname(model_path), exist_ok=True)
-        Util.dump(self.model, model_path)
+        self.model.save(model_path)
+        Util.dump(self.scaler, scaler_path)
 
     def load_model(self, feature):
-        model_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}.model')
-        self.model = Util.load(model_path)
-
-
-if __name__ == "__main__":
-    params = {
-        'multi_class' :'multinomial', 
-        'solver' : 'saga',
-        'penalty' : 'l2', 
-        'dual' :False, 
-        'tol' :0.0001,
-        'C' : 1.0,
-        'fit_intercept' : True, 
-        'intercept_scaling' : 1, 
-        'class_weight' : None, 
-        'random_state' : 71, 
-        'max_iter' : 500, 
-        'verbose' : 0, 
-        'warm_start' : False,
-        'n_jobs' : None, 
-        'l1_ratio' : None
-    }
-    model = ModelLogistic("test", **dict(params))
-    check_estimator(model)
+        model_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}.h5')
+        scaler_path = os.path.join(f'../model/model/{feature}', f'{self.run_fold_name}-scaler.pkl')
+        self.model = load_model(model_path)
+        self.scaler = Util.load(scaler_path)

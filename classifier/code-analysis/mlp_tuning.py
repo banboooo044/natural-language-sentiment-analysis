@@ -6,28 +6,36 @@ import pandas as pd
 from hyperopt import hp
 from hyperopt import fmin, tpe, STATUS_OK, Trials
 
+# 学習データを学習データとバリデーションデータに分ける
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import log_loss
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from src.util import load_x_train, load_y_train, Logger
+from src.util import Logger
 from src.model_MLP import ModelMLP
+from src.runner import Runner
 
 import gc
 gc.collect()
 logger = Logger()
 
-# 学習データを学習データとバリデーションデータに分ける
-from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import log_loss
-
+# 目的関数
 def objective(params):
-    global param
-    param.update(params)
-    model = ModelMLP("MLP", **param)
+    global base_params
+    # base parameter のパラメータを探索パラメータに更新する
+    base_params.update(params)
+
+    # モデルオブジェクト生成 & Train
+    model = ModelMLP("MLP", **base_params)
     model.train(tr_x, tr_y, va_x, va_y)
+
+    # 予測
     va_pred = model.predict(va_x)
     score = log_loss(va_y, va_pred)
     print(f'params: {params}, logloss: {score:.4f}')
+
     # 情報を記録しておく
     history.append((params, score))
     del model
@@ -36,7 +44,7 @@ def objective(params):
 
 if __name__ == '__main__':
     # 基本となるパラメータ
-    param = {
+    base_params = {
         'input_dropout': 0.0,
         'hidden_layers': 3,
         'hidden_units': 96,
@@ -63,42 +71,42 @@ if __name__ == '__main__':
         'batch_size': hp.quniform('batch_size', 32, 128, 32)
     }
 
-    #features = [
-    #    "bow","bow_nva","bow_tf-idf","term_2-gram","term_3-gram","word2vec_mean","word2vec_pre_mean",
-    #    "word2vec_fine-tuning", "doc2vec", "scdv", "bert"
-    #]
     features = [
         "tf-idf","n-gram","n-gram-tf-idf"
     ]
-    #features = [
-    #    "word2vec_mean", "word2vec_max", "word2vec_concat", "word2vec_hier", "fasttext_mean", "fasttext_max", "fasttext_concat", "fasttext_hier"
-    #]
 
     NAME = "-".join(features)
-
     result = { }
+    
+    # 1つの特徴量について探索するパラメータの組み合わせ数
+    max_evals = 100
+    # リストfeaturesの各特徴量に対して, 最良なパラメータを探索する
     for i, name in enumerate(features):
-        train_x = load_x_train(name)
-        train_y = load_y_train(name)
+        train_x = Runner.load_x_train(name)
+        train_y = Runner.load_y_train()
         skf = StratifiedKFold(n_splits=6, shuffle=True, random_state=71)
         tr_idx, va_idx = list(skf.split(train_x, train_y))[0]
         tr_x, va_x = train_x[tr_idx], train_x[va_idx]
         tr_y, va_y = train_y[tr_idx], train_y[va_idx]
 
         # hyperoptによるパラメータ探索の実行
-        max_evals = 100
         trials = Trials()
         history = []
         fmin(objective, param_space, algo=tpe.suggest, trials=trials, max_evals=max_evals)
+
+        # 探索結果をログに出力
         history = sorted(history, key=lambda tpl: tpl[1])
         best = history[0]
         logger.info(f'{name} - best params:{best[0]}, score:{best[1]:.4f}')
         
+        # 探索結果を記録
         for key, value in best[0].items():
             if key in result:
                 result[key].append(value)
             else:
                 result[key] = [value]
+
+    # 全ての探索結果をファイルに書き込み
     res = pd.DataFrame.from_dict(
         result,
         orient='index',

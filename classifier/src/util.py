@@ -1,3 +1,4 @@
+# 雑多プログラム
 import datetime
 import logging
 import os
@@ -10,14 +11,17 @@ from scipy.sparse import load_npz
 class Util:
     @classmethod
     def dump(cls, value, path):
+        """ モデルの保存 """
         os.makedirs(os.path.dirname(path), exist_ok=True)
         joblib.dump(value, path, compress=True)
 
     @classmethod
     def load(cls, path):
+        """ モデルのロード """
         return joblib.load(path)
 
 class Logger:
+    """ ログをコンソール, ファイル保存する """
     def __init__(self):
         self.general_logger = logging.getLogger('general')
         self.result_logger = logging.getLogger('result')
@@ -57,6 +61,7 @@ class Logger:
     def to_ltsv(self, dic):
         return '\t'.join(['{}:{}'.format(key, value) for key, value in dic.items()])
 
+"""
 def load_x_train(features, sparse=False):
     if features == "bow":
         matrix =load_npz('../vec/bow_train_x.npz').astype('float64')
@@ -118,6 +123,7 @@ def load_y_train(features):
     else:
         return np.load('../vec/y_full.npy', allow_pickle=True).astype('int')
 
+"""
 """
 class Submission:
 
