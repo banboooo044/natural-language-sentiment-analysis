@@ -19,5 +19,5 @@ cv_n = TfidfVectorizer(ngram_range=(1,3), min_df=2)
 matrix_n = cv_n.fit_transform(df["text"])
 
 # 保存
-save_npz('../vec/tf-idf_x.npz', matrix)
-save_npz('../vec/n-gram-tf-idf_x.npz', matrix_n)
+save_npz('../vec/tf-idf.npz', matrix)
+save_npz('../vec/n-gram-tf-idf.npz', matrix_n)

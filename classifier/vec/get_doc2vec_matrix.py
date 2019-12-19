@@ -4,6 +4,9 @@ import os, sys
 import pandas as pd
 import numpy as np
 from gensim.models import KeyedVectors
+import warnings
+
+warnings.simplefilter('ignore', DeprecationWarning)
 
 def load_model(path):
     model = KeyedVectors.load(f'./{path}.model')

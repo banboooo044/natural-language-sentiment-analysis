@@ -15,6 +15,8 @@ import pandas as pd
 import logging
 from gensim.models import Word2Vec,KeyedVectors
 from sklearn.preprocessing import normalize
+import warnings
+warnings.simplefilter('ignore', DeprecationWarning)
 
 """ 
 This is a model which is described in "Baseline Needs More Love: On Simple Word-Embedding-Based Models and Associated Pooling Mechanisms"

@@ -19,5 +19,5 @@ cv_n = CountVectorizer(ngram_range=(1,3), min_df=1)
 matrix_n = cv_n.fit_transform(df["text"])
 
 # 保存
-save_npz('../vec/bow_train_x.npz', matrix)
-save_npz('../vec/n-gram_x.npz', matrix_n)
+save_npz('../vec/bow_train.npz', matrix)
+save_npz('../vec/n-gram.npz', matrix_n)

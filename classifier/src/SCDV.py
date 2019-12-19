@@ -8,6 +8,8 @@ from gensim.models import Word2Vec, TfidfModel
 from sklearn.mixture import GaussianMixture
 import sklearn.base
 from tqdm import tqdm
+import warnings
+warnings.simplefilter('ignore', DeprecationWarning)
 
 class SCDVVectorizer(sklearn.base.BaseEstimator):
     """ This is a model which is described in "SCDV : Sparse Composite Document Vectors using soft clustering over distributional representations"
@@ -86,7 +88,10 @@ class SCDVVectorizer(sklearn.base.BaseEstimator):
             model = embedding_model
         embeddings = np.zeros((len(dictionary.token2id), model.vector_size))
         for token, idx in dictionary.token2id.items():
-            embeddings[idx] = model.wv[token]
+            if token in model.wv.vocab:
+                embeddings[idx] = model.wv[token]
+            else:
+                embeddings[idx] = np.random.randn(model.vector_size)
         return embeddings
 
     def _build_word_cluster_probabilities(self, word_embeddings: np.ndarray, cluster_size: int,

@@ -6,6 +6,9 @@ from gensim.models import Word2Vec, TfidfModel, KeyedVectors
 from gensim.corpora import Dictionary
 
 from tqdm import tqdm
+import warnings
+
+warnings.simplefilter('ignore', DeprecationWarning)
 
 def createVector(df, model):
     print("create Vector")

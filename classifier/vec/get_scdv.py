@@ -11,6 +11,8 @@ from sklearn.preprocessing import normalize
 import re
 
 from src.SCDV import SCDVVectorizer
+import warnings
+warnings.simplefilter('ignore', DeprecationWarning)
 
 def save_model(model, filename):
     print("save model ...")
