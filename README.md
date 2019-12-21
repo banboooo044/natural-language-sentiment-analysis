@@ -1,21 +1,6 @@
 # natural-language-sentiment-analysis
 
-## 1. セットアップ方法
-github上には, メモリの関係上元データしかアップしていないので, 以下の手順でプログラムを実行することで復元できる.
-
-1. 学習済みモデルのダウンロードし, 指定の置き場所にファイルを置く.
-2. 以下のようにプログラムを実行
-  ```bash
-    bash data/setup.sh
-  ```
-3. 以下のようにプログラムを実行
-  ```bash
-    bash vec/setup.sh
-  ```
-
-(元データ : data/corpus.tsv)
-
-## 2. 学習済みモデルのダウンロード
+## 1. 学習済みモデルのダウンロード
 * Word2vec
 「東北大学 乾・岡崎研究室の公開モデル」
   - http://www.cl.ecei.tohoku.ac.jp/~m-suzuki/jawiki_vector/
@@ -40,7 +25,25 @@ github上には, メモリの関係上元データしかアップしていない
 
   置き場所: classifier/vec/jawiki.doc2vec.dbow300d, classifier/vec/jawiki.doc2vec.dmpv300d
 
-## 3. 前処理, 特徴量作成等
+## 2. セットアップ方法
+github上には, メモリの関係上元データしかアップしていないので, 以下の手順でプログラムを実行することで復元できる.
+
+1. 以下をコマンドラインで実行.
+   ```
+   git clone https://github.com/banboooo044/natural-language-sentiment-analysis.git
+   ```
+2. 学習済みモデルのダウンロードし, 指定の置き場所にファイルを置く.
+3. 以下をコマンドラインで実行.前処理と分かち書きが行われたファイルが作成される.
+  ```bash
+    bash data/setup.sh
+  ```
+  
+4. 以下でコマンドラインを実行.特徴量の行列ファイルが作成される.
+  ```bash
+    bash vec/setup.sh
+  ```
+
+## 3. 前処理, 特徴量作成のプログラム
 
 ### data/
 
@@ -86,6 +89,30 @@ JUMANの方が精度が良いので以降の分析ではこちらを使ってい
 * sdv.py : sdv(極性辞書を使う方法)の特徴量を作成
 
   出力ファイル : sdv.npy
+
+## 5. 分析プログラム
+
+プログラムが分かれていて、全体として何をやってるのかわかりにくいかもしれないので、わかりやすい(?)プログラムはこちら &rarr; 
+
+### src/ : 汎用的なプログラム(他のプログラムから呼び出して使う再利用性の高いもの)
+
+* model.py : Modelクラスは学習, 予測, モデルの保存やロードを行う.Modelクラスを継承して, 分類アルゴリズムごとのクラスを作る.
+  * model_NB : ナイーブベイズ(多項分布モデル)
+  * model_GaussNB : ナイーブベイズ(ガウス分布モデル)
+  * model_logistic.py : ロジスティック回帰
+  * model_lgb.py : LightGBM
+  * model_MLP ; Multilayer Perceptron
+  * model_LSTM : LSTM
+  * model_GRU : GRU
+  
+* runner.py : Runnerクラスはクロスバリデーションなども含めた学習, 評価, 予測を行うためのクラス.Modelクラスを継承しているプログラムを渡す.
+* util.py : ファイルの入出力, ログの出力や表示, 計算結果の表示や出力を行うクラス
+
+### code-analysis/ : コード分析用のプログラム
+
+* run_[アルゴリズム名].py : Runnerクラスを用いて, 実際に各分類アルゴリズムで学習を行うプログラム.
+* [アルゴリズム名]_gridCV.py : グリッドサーチでアルゴリズムのパラメータチューニングを行うプログラム.
+* [アルゴリズム名]_tuning.py : hyperopt(ベイズ最適化を用いたパラメータ自動探索ツール)を用いてパラメータチューニングを行うプログラム
 
 ## 4. 実験(Twitter Corpus)
 
